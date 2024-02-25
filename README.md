@@ -1,8 +1,12 @@
-![actiry-pos](https://user-images.githubusercontent.com/68384962/115121239-bb106480-9fdb-11eb-9076-731d4181988b.png)
+<!-- ![posmeReact](https://user-images.githubusercontent.com/68384962/115121239-bb106480-9fdb-11eb-9076-731d4181988b.png)
+ -->
+ ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/background.png)
+![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/caisse.png)
+![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/facturer.png)
 
 ## About Actiry POS
 
-Actiry POS is an open source project by actiry. Implementation from https://github.com/emsifa/tailwind-pos. Using different technology. Which is laravel for backend and react js for front end UI. And plus laravel authentication.
+PosmeReact Implementation from https://github.com/Affog7/posmeReact. Using different technology. Which is laravel for backend and react js for front end UI. And plus laravel authentication.
 
 ## How to run the project
 
@@ -15,8 +19,9 @@ Actiry POS is an open source project by actiry. Implementation from https://gith
 - Run "php artisan db:seed" command
 - Run "npm install" for installing npm packages
 - Run "npm run dev" for development, or "npm run production" for production
+- npm run watch-poll for live compilation
 - Serve the app using "php artisan serve" or using webserver like apache
-- And done. App ready to use. With default credential { username: heri, password: asdf } ( created by seeder )
+- And done. App ready to use. With default credential { username: Dev, password: asdf } ( created by seeder )
 - 
 ## License
 
