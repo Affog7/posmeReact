@@ -2204,7 +2204,9 @@ var App = function App() {
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_LeftSidebar__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_ProductMode__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_LeftSidebar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        menu: "/"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_ProductMode__WEBPACK_IMPORTED_MODULE_7__["default"], {
         addToCart: addToCart
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_RightSidebar__WEBPACK_IMPORTED_MODULE_6__["default"], {
         clearCart: clearCart,
@@ -2226,7 +2228,7 @@ var App = function App() {
       getTotalPrice: getTotalPrice,
       cash: cash,
       clt: {
-        client: " ",
+        client: "",
         id: -1
       },
       is_caisse: false,
@@ -2289,6 +2291,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var LeftSidebar = function LeftSidebar(props) {
+  var menu = props.menu;
   var logout = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -2333,10 +2336,10 @@ var LeftSidebar = function LeftSidebar(props) {
         className: "flex flex-col space-y-2 mt-12",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-            href: "#",
+            href: "/",
             className: "flex items-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              className: "flex items-center justify-center h-12 w-12 rounded-2xl bg-cyan-300 shadow-lg text-white",
+              className: "flex items-center justify-center  ".concat(menu == '/' ? "h-12 w-12 rounded-2xl  bg-cyan-300 shadow-lg text-white" : "text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl", " "),
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("svg", {
                 xmlns: "http://www.w3.org/2000/svg",
                 className: "h-6 w-6",
@@ -2357,7 +2360,7 @@ var LeftSidebar = function LeftSidebar(props) {
             href: "/caisse",
             className: "flex items-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-              className: "flex items-center justify-center text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl",
+              className: "flex items-center justify-center  ".concat(menu == '/caisse' ? "h-12 w-12 rounded-2xl  bg-cyan-300 shadow-lg text-white" : "text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl", " "),
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("svg", {
                 xmlns: "http://www.w3.org/2000/svg",
                 className: "h-6 w-6",
@@ -2605,7 +2608,7 @@ var ReceiptModal = function ReceiptModal(props) {
           className: "text-xl font-semibold",
           children: "ACTIRY POS"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: "CABANG SUNAGARA"
+          children: "AUGAFF SHOP"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "flex mt-4 text-xs",
@@ -2715,7 +2718,7 @@ var ReceiptModal = function ReceiptModal(props) {
                 return printAndProceed();
               },
               className: "bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none",
-              children: processing ? 'Processing..' : 'PROCEED'
+              children: processing ? 'Processing..' : 'VALIDER'
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               disabled: processing,
               onClick: function onClick() {
@@ -3127,7 +3130,7 @@ var LiveSearchComponent = function LiveSearchComponent(_ref) {
     className: "max-w-md mx-auto p-4",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
       type: "text",
-      placeholder: "Search...",
+      placeholder: "Rechercher client...",
       value: searchTerm,
       onChange: function onChange(e) {
         return setSearchTerm(e.target.value);

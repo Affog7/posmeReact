@@ -115,7 +115,7 @@ const Caisse = () => {
     return (
         <>
             <Layout>
-                <LeftSidebar />
+                <LeftSidebar menu={"/caisse"} />
                 <CaisseMode addMultipleToCart={addMultipleToCart} />
                 <RightSidebar
                     clearCart = {clearCart}

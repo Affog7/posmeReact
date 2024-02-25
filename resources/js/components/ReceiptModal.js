@@ -62,7 +62,7 @@ const ReceiptModal = (props) => {
                 <div className="text-center">
                     <img src="img/logo.png" className="w-10 m-auto filter grayscale" />
                     <h2 className="text-xl font-semibold">ACTIRY POS</h2>
-                    <p>CABANG SUNAGARA</p>
+                    <p>AUGAFF SHOP</p>
                 </div>
                 <div className="flex mt-4 text-xs">
                     <div className="flex-grow">
@@ -132,7 +132,7 @@ const ReceiptModal = (props) => {
 
                         <div className="p-4 w-full">
                             <button disabled={processing} onClick={() => printAndProceed()} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
-                                { processing ? 'Processing..' : 'PROCEED'}
+                                { processing ? 'Processing..' : 'VALIDER'}
                             </button>
                             <button disabled={processing} onClick={() => printAndCaisse()} className="bg-yellow-700 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'CAISSE'}

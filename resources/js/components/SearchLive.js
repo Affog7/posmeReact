@@ -34,7 +34,7 @@ const LiveSearchComponent = ({onUpdateSelectedItem,client}) => {
     <div className="max-w-md mx-auto p-4">
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Rechercher client..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"

@@ -105,7 +105,7 @@ const App = () => {
     return (
         <>
             <Layout>
-                <LeftSidebar />
+                <LeftSidebar menu={"/"} />
                 <ProductMode addToCart={addToCart} />
                 <RightSidebar
                     clearCart={clearCart}
@@ -128,7 +128,7 @@ const App = () => {
                 cartItems={cartItems}
                 getTotalPrice={getTotalPrice}
                 cash={cash}
-                clt={{client : " ", id: -1}}
+                clt={{client : "", id: -1}}
                 is_caisse = {false}
                 change={change}
                 idInvoice = {-1}

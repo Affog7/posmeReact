@@ -2,6 +2,8 @@ import React from 'react'
 import web from '../utils/web'
 
 const LeftSidebar = props => {
+ const {menu} = props
+
     const logout = async () => {
         if(confirm('Are you sure you want to log out?')) {
             await web.post('/logout')
@@ -11,8 +13,8 @@ const LeftSidebar = props => {
                 }else{
                     alert('Logout error. Please try refresh your browser')
                     console.log(response)
-                }
-            })
+                    }
+                })
             .catch((error) => {
                 alert('Logout error. Please try refresh your browser')
             })
@@ -28,9 +30,9 @@ const LeftSidebar = props => {
                 </a>
                 <ul className="flex flex-col space-y-2 mt-12">
                     <li>
-                        <a href="#"
+                        <a href="/"
                         className="flex items-center">
-                        <span className="flex items-center justify-center h-12 w-12 rounded-2xl bg-cyan-300 shadow-lg text-white">
+                        <span className={`flex items-center justify-center  ${ menu=='/' ? "h-12 w-12 rounded-2xl  bg-cyan-300 shadow-lg text-white" : "text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl" } `}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                             </svg>
@@ -39,7 +41,7 @@ const LeftSidebar = props => {
                     </li>
                     <li>
                         <a href="/caisse" className="flex items-center">
-                        <span className="flex items-center justify-center text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl">
+                        <span  className={`flex items-center justify-center  ${ menu=='/caisse' ? "h-12 w-12 rounded-2xl  bg-cyan-300 shadow-lg text-white" : "text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl" } `}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>

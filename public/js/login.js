@@ -31903,7 +31903,7 @@ var Login = function Login() {
               className: "text-xl font-semibold",
               children: "ACTIRY POS"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-              children: "CABANG SUNAGARA"
+              children: "AUGAFF SHOP"
             })]
           }), error !== '' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
             "class": "bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-5",

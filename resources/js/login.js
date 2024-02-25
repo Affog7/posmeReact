@@ -3,7 +3,6 @@ import React, {useRef, useState} from 'react'
 import web from './utils/web'
 
 const Login = () => {
-
     const usernameRef = useRef()
     const passwordRef = useRef()
 
@@ -41,7 +40,7 @@ const Login = () => {
                         <div className="text-center mb-5">
                             <img src="img/logo.png" className="w-10 m-auto" />
                             <h2 className="text-xl font-semibold">ACTIRY POS</h2>
-                            <p>CABANG SUNAGARA</p>
+                            <p>AUGAFF SHOP</p>
                         </div>
                         { error !== '' &&
                             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-5" role="alert">
@@ -52,6 +51,7 @@ const Login = () => {
                                 </span>
                             </div>
                         }
+
                         <form id="login-form" onSubmit={handleSubmit}>
                             <div className="flex flex-col mb-4">
                                 <label className="mb-2 uppercase font-semibold text-sm text-grey-darkest" htmlFor="username">Username</label>
