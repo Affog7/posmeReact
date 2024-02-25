@@ -6,14 +6,16 @@ import Layout from './components/Layout'
 import LeftSidebar from './components/LeftSidebar'
 import ReceiptModal from './components/ReceiptModal'
 import RightSidebar from './components/RightSidebar'
-import ProductMode from './pages/ProductMode'
+import CaisseMode from './pages/CaisseMode'
 
-const App = () => {
+const Caisse = () => {
     const [cartItems, setCartItems] = useState([])
     const [cash, setCash] = useState(0)
     const [change, setChange] = useState(0)
+    const [idInvoice, setIdInvoice] = useState(-1)
     const [showReceiptModal, setShowReceiptModal] = useState(false)
     const [receipt, setReceipt] = useState({})
+    const [client, setClient] = useState({})
 
     useEffect(() => {
         updateChange()
@@ -40,6 +42,13 @@ const App = () => {
         )
     }
 
+    const addMultipleToCart = (products,client,idInvoice) => { 
+         setCartItems( products);
+         setClient(client);
+         setIdInvoice(idInvoice)
+         beep();
+      };
+      
     const addToCart = (product) => {
         const exist = cartItems.find((item) => item.id === product.id)
 
@@ -50,6 +59,7 @@ const App = () => {
                 )
             )
         }else{
+            console.log(product)
             setCartItems([...cartItems, {...product, qty: 1}])
         }
 
@@ -106,36 +116,35 @@ const App = () => {
         <>
             <Layout>
                 <LeftSidebar />
-                <ProductMode addToCart={addToCart} />
+                <CaisseMode addMultipleToCart={addMultipleToCart} />
                 <RightSidebar
-                    clearCart={clearCart}
-                    removeFromCart={removeFromCart}
-                    addToCart={addToCart}
-                    cartItems={cartItems}
-                    getTotalPrice={getTotalPrice}
-                    addCash={addCash}
-                    cash={cash}
-                    change={change}
-                    idInvoice ={-1}
-                    submit={submit}
+                    clearCart = {clearCart}
+                    removeFromCart = {removeFromCart}
+                    addToCart = {addToCart}
+                    cartItems = {cartItems}
+                    getTotalPrice = {getTotalPrice}
+                    addCash = {addCash}
+                    cash = {cash}
+                    change = {change}
+                    submit = {submit}
                 />
             </Layout>
             
             <ReceiptModal
-                showReceiptModal={showReceiptModal}
-                setShowReceiptModal={setShowReceiptModal}
-                receipt={receipt}
-                cartItems={cartItems}
-                getTotalPrice={getTotalPrice}
-                cash={cash}
-                clt={{client : " ", id: -1}}
-                is_caisse = {false}
-                change={change}
-                idInvoice = {-1}
-                clearAll={clearAll}
+                showReceiptModal = {showReceiptModal}
+                setShowReceiptModal = {setShowReceiptModal}
+                receipt = {receipt}
+                cartItems = {cartItems}
+                getTotalPrice = {getTotalPrice}
+                cash = {cash}
+                clt = {client}
+                is_caisse = {true}                
+                change = {change}
+                idInvoice = {idInvoice}
+                clearAll = {clearAll}
             />
         </>
     )
 }
 
-ReactDOM.render( <App />, document.getElementById('root') )
+ReactDOM.render( <Caisse />, document.getElementById('caisse') )

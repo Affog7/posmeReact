@@ -1,3 +1,4 @@
+import {DEVISE} from '../utils/content'
 export const numberFormat = (number) => {
     return (Math.round(number) || "")
         .toString()
@@ -6,7 +7,7 @@ export const numberFormat = (number) => {
 }
 
 export const priceFormat = (number) => {
-    return number ? `Rp. ${numberFormat(number)}` : `Rp. 0`;
+    return number ? `${DEVISE}. ${numberFormat(number)}` : `${DEVISE}. 0`;
 }
 
 export const dateFormat = (date) => {

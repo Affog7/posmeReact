@@ -1,20 +1,39 @@
 import React, {useState} from 'react'
 import { priceFormat } from '../utils/helper';
 import web from '../utils/web'
-
+import LiveSearchComponent from './SearchLive'
 const ReceiptModal = (props) => {
-
-    const {showReceiptModal, setShowReceiptModal, receipt, cartItems, getTotalPrice, cash, change, clearAll} = props;
+    const {showReceiptModal, setShowReceiptModal, receipt, cartItems, getTotalPrice, cash, clt, is_caisse,change, idInvoice, clearAll} = props;
     const [processing, setProcessing] = useState(false)
+     const [client_id, setClientId] = useState(clt.id)
+    let [is_paid, setIs_paid] = useState(true)
+ 
+    // pour mettre à jour
+    const handleDataUpdate  = (value) => {
+        setClientId(value);
+        //console.log(value);
+      };
+    
+    const printAndCaisse = async () => {
+        setIs_paid(false);
+        is_paid = false
+        
+        printAndProceed();
+    }
 
     const printAndProceed = async () => {
         setProcessing(true)
+        setIs_paid(true)
         // Store to database
         await web.post('/invoice/store', {
             receipt_number: receipt.receiptNo,
             total_amount: getTotalPrice(),
             cash: cash,
             change: change,
+            client: client_id > 0 ? client_id : clt.id,
+            is_paid : is_paid,
+            is_caisse : is_caisse,
+            id_invoice : idInvoice,
             products: cartItems
         })
         .then((response) => {
@@ -26,13 +45,14 @@ const ReceiptModal = (props) => {
                 window.print()
                 clearAll()
                 document.title = titleBefore
-            }else{
-                alert('Error. Please try again');
+            } else {
+                alert('Error. Please try again 0');
             }
-        })
+        } )
         .catch((error) => {
             setProcessing(false)
-            alert('Error. Please try again');
+            console.log(error)
+            alert('Error. Please try again 1');
         })
     }
 
@@ -45,7 +65,11 @@ const ReceiptModal = (props) => {
                     <p>CABANG SUNAGARA</p>
                 </div>
                 <div className="flex mt-4 text-xs">
-                    <div className="flex-grow">No : <span>{ receipt.receiptNo}</span></div>
+                    <div className="flex-grow">
+                        No : <span>{ receipt.receiptNo} - </span>
+                        { is_paid ? " PAIEMENT FAIT " : " PAIEMENT NON FAIT " }
+                    
+                    </div>
                     <div></div>
                 </div>
                 <hr className="my-2" />
@@ -103,11 +127,18 @@ const ReceiptModal = (props) => {
                     <div onClick={() => setShowReceiptModal(false)} className="fixed glass w-full h-screen left-0 top-0 z-0 opacity-100"></div>
                     <div className="w-96 rounded-3xl bg-white shadow-xl overflow-hidden z-10 opacity-100 scale-100">
                         <Receipt />
+
+                        <LiveSearchComponent onUpdateSelectedItem={handleDataUpdate} client={clt.client} />
+
                         <div className="p-4 w-full">
-                            <button disabled={processing} onClick={() => printAndProceed()} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-full focus:outline-none">
+                            <button disabled={processing} onClick={() => printAndProceed()} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'PROCEED'}
                             </button>
+                            <button disabled={processing} onClick={() => printAndCaisse()} className="bg-yellow-700 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
+                                { processing ? 'Processing..' : 'CAISSE'}
+                            </button>
                         </div>
+                        
                     </div>
                 </div>
                 <div className="print-area">

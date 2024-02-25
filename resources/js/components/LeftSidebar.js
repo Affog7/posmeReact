@@ -2,7 +2,6 @@ import React from 'react'
 import web from '../utils/web'
 
 const LeftSidebar = props => {
-
     const logout = async () => {
         if(confirm('Are you sure you want to log out?')) {
             await web.post('/logout')
@@ -19,6 +18,7 @@ const LeftSidebar = props => {
             })
         }
     }
+
     return (
         <div className="w-30 bg-blue-gray-50 flex flex-row flex-shrink-0 pl-4 pr-2 py-4">
             <div className="flex flex-col items-center py-4 flex-shrink-0 w-20 bg-cyan-500 rounded-3xl">
@@ -38,8 +38,7 @@ const LeftSidebar = props => {
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                        className="flex items-center">
+                        <a href="/caisse" className="flex items-center">
                         <span className="flex items-center justify-center text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -93,7 +92,7 @@ const LeftSidebar = props => {
                     </li>
                     <li>
                         <a
-                        href="https://github.com/herilesmana/actiry-pos"
+                        href="https://github.com/Affog7/posmeReact.git"
                         target="_blank"
                         className="flex items-center justify-center text-cyan-200 hover:text-cyan-100 h-12 w-12 focus:outline-none"
                         >

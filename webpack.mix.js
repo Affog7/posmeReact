@@ -21,8 +21,10 @@ mix.options({
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/login.js', 'public/js')
+    .js('resources/js/caisse.js', 'public/js')
     .react()
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss')
     ]);
-    // .sass('resources/sass/app.scss', 'public/css');
+
+console.log('Laravel Mix configuration completed.');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {priceFormat, numberFormat} from '../utils/helper'
-
+import {DEVISE} from '../utils/content'
 const RightSidebar = (props) => {
     const { cartItems, addToCart, clearCart, removeFromCart, getTotalPrice, addCash, cash, change, submit } = props;
     const moneys = [2000, 5000, 10000, 20000, 50000, 100000]
@@ -67,7 +67,6 @@ const RightSidebar = (props) => {
               ))}
             </div>
           </div>
-
           }
 
           <div className="select-none h-auto w-full text-center pt-3 pb-4 px-4">
@@ -84,7 +83,7 @@ const RightSidebar = (props) => {
               <div className="flex text-lg font-semibold">
                 <div className="flex-grow text-left">CASH</div>
                 <div className="flex text-right">
-                  <div className="mr-2">Rp</div>
+                  <div className="mr-2">{DEVISE}</div>
                   <input readOnly value={numberFormat(cash)} type="text" className="w-28 text-right bg-white shadow rounded-lg focus:bg-white focus:shadow-lg px-2 focus:outline-none" />
                 </div>
               </div>
@@ -106,9 +105,24 @@ const RightSidebar = (props) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
               </svg>
             </div> */}
-            <button onClick={() => submit()} disabled={change < 0 || cartItems.length <= 0} className={"text-white rounded-2xl text-lg w-full py-3 focus:outline-none "+(change >= 0 && cartItems.length > 0 ? "bg-cyan-500 hover:bg-cyan-600" : "bg-blue-gray-200")}>
-              SUBMIT
+           <div className="flex justify-center">
+            <button onClick={() => submit()} disabled={change < 0 || cartItems.length <= 0} className={"text-white rounded-2xl text-lg w-4/6 py-3 focus:outline-none "+(change >= 0 && cartItems.length > 0 ? "bg-cyan-500 hover:bg-cyan-600" : "bg-blue-gray-200")}>
+              VALIDER
             </button>
+            <button onClick={() => alert("contactez Augustin")} disabled={cartItems.length <= 0} className={"flex justify-center m-2 text-lg font-semibold "+( cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200")+ "  text-red-700 rounded-lg py-2 px-3 w-2/6"}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 25" width="35" height="25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="5" width="16" height="16" rx="2" ry="2"/>
+                <line x1="10" y1="7" x2="14" y2="7"/>
+                <line x1="10" y1="11" x2="14" y2="11"/>
+                <line x1="10" y1="15" x2="14" y2="15"/>
+                <line x1="10" y1="15" x2="14" y2="15"/>
+                <line x1="10" y1="19" x2="14" y2="19"/>
+                <line x1="7" y1="7" x2="7" y2="17"/>
+                <text x="20%" y="50%"  alignment-baseline="bottom" text-anchor="bottom" font-size="15" fill="#FFFFFF">FAC</text>
+              </svg>
+            </button>
+           </div>
+            
           </div>
         </div>
       </div>
