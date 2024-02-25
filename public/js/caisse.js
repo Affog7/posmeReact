@@ -3263,9 +3263,11 @@ var CaisseMode = function CaisseMode(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   DEVISE: () => (/* binding */ DEVISE)
+/* harmony export */   DEVISE: () => (/* binding */ DEVISE),
+/* harmony export */   NAME: () => (/* binding */ NAME)
 /* harmony export */ });
 var DEVISE = "XOAF";
+var NAME = "AFFOPOS";
 
 /***/ }),
 
