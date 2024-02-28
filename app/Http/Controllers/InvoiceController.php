@@ -55,4 +55,7 @@ class InvoiceController extends Controller
 
         return response()->json(['success' => 1, 'message' => 'Invoice store succeed']);
     }
+
+
+   
 }
