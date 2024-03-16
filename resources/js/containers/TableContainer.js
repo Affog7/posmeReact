@@ -1,12 +1,17 @@
+// TableContainer.js
 import { connect } from 'react-redux';
-import Table from '../components/Table';
-
-const TableContainer = ({ data }) => {
-  return <Table data={data} />;
-};
+import TableComponent from '../components/TableComponent';
+import { fetchDataSuccess, fetchData } from '../actions/dataActions';
 
 const mapStateToProps = (state) => ({
-  data: state.data.data,
+  data: state.data,
+});
+ const mapDispatchToProps = (dispatch, props) => ({
+  fetchData: () => dispatch(fetchData()), // Appelle fetchData en tant que fonction
+  fetchDataSuccess: (data) => dispatch(fetchDataSuccess(data)),
+  addMultipleToCart: props.addMultipleToCart ,
 });
 
-export default connect(mapStateToProps)(TableContainer);
+const TableContainer = connect(mapStateToProps, mapDispatchToProps)(TableComponent);
+
+export default TableContainer;

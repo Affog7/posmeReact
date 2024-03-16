@@ -1,50 +1,59 @@
-import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom' 
+// App.js
+import React, { useEffect , useState} from 'react';
+import { createRoot } from 'react-dom/client';
 
-import Layout from './components/Layout'
-import LeftSidebar from './components/LeftSidebar' 
-import TableContainer from './containers/TableContainer'
 import { Provider } from 'react-redux';
 import store from './utils/store';
-import AdminContainer from './containers/AdminContainer';
+import TableContainer from './containers/TableContainer';
+import { fetchData } from './actions/dataActions';
+import LeftSidebar from './components/LeftSidebar';
+import Layout from './components/Layout';
+import RightSidebarAdmin from './components/RightSidebarAdmin';
+
 const Admin = () => {
-    const [invoices, setInvoices] = useState([]);
+  const [cartItems, setCartItems] = useState([])
+  const [idInvoice, setIdInvoice] = useState(-1)
+  const [client, setClient] = useState({})
+  const [cash, setCash] = useState(0)
+  const [seller, setSeller] = useState("")
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            setIsLoading(true);
-            const result = await web('/invoices');
-            setInvoices(result.data);
-          } catch (error) {
-            console.error('Error fetching invoices:', error);
-            // Gérez l'erreur selon vos besoins, par exemple, affichez un message d'erreur à l'utilisateur
-          } finally {
-            setIsLoading(false);
-          }
-        };
-      
-        fetchData(); // Appeler fetchData lors du montage
-      
-        const intervalId = setInterval(fetchData, 1000); // Appeler fetchData chaque seconde
-      
-        // Nettoyer l'intervalle lors du démontage du composant
-        return () => clearInterval(intervalId);
-      }, []);
+  const addMultipleToCart = (item) => {  
+    setCartItems(item.products);
+    setClient({client : item.client, id : item.client_id});
+    setIdInvoice(item.id)
+    setCash(item.change)
+    setSeller(item.name)
+ };
 
-    return (
-        <>
-            <Layout>
-                <LeftSidebar menu={"/admin"} />
-                <AdminContainer />
-            </Layout>
-           
-        </>
-    )
+ const getTotalPrice = () => {
+  return cartItems.reduce(
+      (total, item) => total + (item['qty']*item['price'] || 0), 0
+  )
 }
 
-ReactDOM.render(
+  return (
     <Provider store={store}>
-        <Admin />
-    </Provider>,
-      document.getElementById('admin') )
+      <div> 
+      <Layout>
+                <LeftSidebar menu={"/admin/invoices"} />
+                <TableContainer addMultipleToCart={addMultipleToCart} />
+                <RightSidebarAdmin                   
+                    cartItems = {cartItems}
+                    getTotalPrice = {getTotalPrice} 
+                    cash = {cash} 
+                    seller = {seller}
+      
+                />
+                
+      </Layout>
+        
+      </div>
+    </Provider>
+  );
+};
+
+export default Admin;
+const container =  document.getElementById('admin') 
+
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<Admin  />);
