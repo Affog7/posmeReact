@@ -18,6 +18,25 @@ export const fetchData = () =>  {
     };
   };
 
+  export const  saveCustomer = (email,tel,address,nom) => {
+      web.post('saveCustomer', {
+          email: email,
+          tel: tel,
+          address: address,
+          name: nom
+      }).then((response) => {
+          if(response.status === 204) {
+              window.location.reload()
+          }
+      }).catch((error) => { 
+          if(error.response.status === 422) {
+              alert('Please check your input')
+          }else{
+              alert('Erreur inconnue Contactez Augustin')
+          }
+      })
+  }
+
   export const fetchDataSuccess = (data) => ({
     type: FETCH_DATA_SUCCESS,
     payload: data,

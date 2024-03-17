@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import web from '../utils/web'
+import RegisterCustomerModal from '../containers/registerCustomerContainer';
 
 const LiveSearchComponent = ({onUpdateSelectedItem,client}) => {
   const [searchTerm, setSearchTerm] = useState(client);
@@ -30,16 +31,28 @@ const LiveSearchComponent = ({onUpdateSelectedItem,client}) => {
     fetchData();
   }, [searchTerm]);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div className="max-w-md mx-auto p-4">
-      <input
-        type="text"
-        placeholder="Rechercher client..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
-      />
- 
+
+      <div className=" flex justify-center">
+        <input
+          type="text"
+          placeholder="Rechercher client..."
+          value={searchTerm}
+          required
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+        />
+        <button className="bg-cyan-500  max-w-md  text-white  w-1/3 " onClick={toggleModal} >Nouveau</button>
+        <RegisterCustomerModal isOpen={isModalOpen} onClose={toggleModal} />
+      </div>
+
       <ul className="mt-2 ">
         {results.map((result) => (
           <li

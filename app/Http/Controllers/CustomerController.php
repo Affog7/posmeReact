@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Custormer;
+
+
 class CustomerController extends Controller
 {
     /**
@@ -44,7 +46,15 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $new = new Custormer;
+       $new->name = $request->name;
+       $new->phone = $request->tel;
+       $new->email = $request->email;
+       $new->address = $request->address;
+
+       $new->save();
+
+       return response()->json($new);
     }
 
     /**

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { priceFormat } from '../utils/helper';
 import web from '../utils/web'
 import LiveSearchComponent from './SearchLive'
+import RegisterCustomerModal from '../containers/registerCustomerContainer';
 const ReceiptModal = (props) => {
     const {showReceiptModal, setShowReceiptModal, receipt, cartItems, getTotalPrice, cash, clt, is_caisse,change, idInvoice, clearAll} = props;
     const [processing, setProcessing] = useState(false)
@@ -123,26 +124,28 @@ const ReceiptModal = (props) => {
         <>
             { showReceiptModal &&
             <>
-                <div className="hide-print fixed w-full h-screen left-0 top-0 z-10 flex flex-wrap justify-center content-center p-24">
+                <div className="hide-print fixed w-full h-screen left-0 top-0 z-10 flex flex-wrap overflow-auto justify-center content-center p-24">
                     <div onClick={() => setShowReceiptModal(false)} className="fixed glass w-full h-screen left-0 top-0 z-0 opacity-100"></div>
                     <div className="w-96 rounded-3xl bg-white shadow-xl overflow-hidden z-10 opacity-100 scale-100">
                         <Receipt />
-
-                        <LiveSearchComponent onUpdateSelectedItem={handleDataUpdate} client={clt.client} />
-
+                         
+                          <LiveSearchComponent onUpdateSelectedItem={handleDataUpdate} client={clt.client} />
+                        
                         <div className="p-4 w-full">
                             <button disabled={processing} onClick={() => printAndProceed()} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'VALIDER'}
                             </button>
-                            <button disabled={processing} onClick={() => printAndCaisse()} className="bg-yellow-700 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
+                            <button disabled={processing || is_caisse}  onClick={() => !is_caisse ? printAndCaisse() : {}} className="bg-yellow-700 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'CAISSE'}
                             </button>
                         </div>
                         
                     </div>
                 </div>
+              
                 <div className="print-area">
                     <Receipt />
+                    
                 </div>
             </>
             }

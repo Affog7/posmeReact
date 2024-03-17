@@ -25,7 +25,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/searchCustomerBy/{text}', [CustomerController::class, 'find']);
     Route::get('/caisse', [CaisseController::class, 'index']);
+
     Route::get('/invoices', [CaisseController::class, 'getAllInvoice']);
+    Route::post('/saveCustomer', [CustomerController::class, 'store']);
 
     Route::get("/admin/invoices", function(){
         return view("admin.invoices");

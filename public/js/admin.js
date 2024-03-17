@@ -461,7 +461,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FETCH_DATA_FAILURE: () => (/* binding */ FETCH_DATA_FAILURE),
 /* harmony export */   FETCH_DATA_SUCCESS: () => (/* binding */ FETCH_DATA_SUCCESS),
 /* harmony export */   fetchData: () => (/* binding */ fetchData),
-/* harmony export */   fetchDataSuccess: () => (/* binding */ fetchDataSuccess)
+/* harmony export */   fetchDataSuccess: () => (/* binding */ fetchDataSuccess),
+/* harmony export */   saveCustomer: () => (/* binding */ saveCustomer)
 /* harmony export */ });
 /* harmony import */ var _utils_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/web */ "./resources/js/utils/web.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -512,6 +513,24 @@ var fetchData = function fetchData() {
       return _ref.apply(this, arguments);
     };
   }();
+};
+var saveCustomer = function saveCustomer(email, tel, address, nom) {
+  _utils_web__WEBPACK_IMPORTED_MODULE_0__["default"].post('saveCustomer', {
+    email: email,
+    tel: tel,
+    address: address,
+    name: nom
+  }).then(function (response) {
+    if (response.status === 204) {
+      window.location.reload();
+    }
+  })["catch"](function (error) {
+    if (error.response.status === 422) {
+      alert('Please check your input');
+    } else {
+      alert('Erreur inconnue Contactez Augustin');
+    }
+  });
 };
 var fetchDataSuccess = function fetchDataSuccess(data) {
   return {
