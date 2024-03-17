@@ -19,6 +19,13 @@ class CaisseController extends Controller
         return view("caisse");
     }
 
+
+    public function getPdfInvoice($id)
+    {
+        $receipt = Invoice::find($id);
+        return view("pdf.invoice", compact("receipt"));
+    }
+    
     /**
      * get all invoices details
      *

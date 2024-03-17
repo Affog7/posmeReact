@@ -127,6 +127,8 @@ const Caisse = () => {
                     cash = {cash}
                     change = {change}
                     submit = {submit}
+                    idInvoice = {idInvoice}
+
                 />
             </Layout>
             

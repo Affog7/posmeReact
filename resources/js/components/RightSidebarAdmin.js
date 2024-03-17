@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {priceFormat, numberFormat} from '../utils/helper'
 import {DEVISE} from '../utils/content'
 const RightSidebar = (props) => {
-    const { cartItems, getTotalPrice,  cash, seller } = props;
+    const { cartItems, getTotalPrice,  cash, seller , idInvoice} = props;
     
     return (
       <div className="w-3/12 flex flex-col bg-blue-gray-50 h-full bg-white pr-4 pl-2 py-4">
@@ -74,7 +74,7 @@ const RightSidebar = (props) => {
 
            <div className="flex justify-center">
          
-            <button onClick={() => alert("contactez Augustin")} disabled={cartItems.length <= 0} className={"flex justify-center m-2 text-lg font-semibold "+( cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200")+ "  text-red-700 rounded-lg py-2 px-3 w-2/6"}>
+            <button onClick={() =>  idInvoice != -1 ?  window.open('/invoice_print/'.concat(idInvoice),'_bank') : {} } disabled={cartItems.length <= 0} className={"flex justify-center m-2 text-lg font-semibold "+( cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200")+ "  text-red-700 rounded-lg py-2 px-3 w-2/6"}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 25" width="35" height="25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="5" y="5" width="16" height="16" rx="2" ry="2"/>
                 <line x1="10" y1="7" x2="14" y2="7"/>

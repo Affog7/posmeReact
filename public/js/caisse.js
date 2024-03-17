@@ -626,7 +626,8 @@ var RightSidebar = function RightSidebar(props) {
     addCash = props.addCash,
     cash = props.cash,
     change = props.change,
-    submit = props.submit;
+    submit = props.submit,
+    idInvoice = props.idInvoice;
   var moneys = [2000, 5000, 10000, 20000, 50000, 100000];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "w-3/12 flex flex-col bg-blue-gray-50 h-full bg-white pr-4 pl-2 py-4",
@@ -833,7 +834,7 @@ var RightSidebar = function RightSidebar(props) {
             children: "VALIDER"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: function onClick() {
-              return alert("contactez Augustin");
+              return idInvoice != -1 ? window.open('invoice_print/'.concat(idInvoice), '_bank') : {};
             },
             disabled: cartItems.length <= 0,
             className: "flex justify-center m-2 text-lg font-semibold " + (cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200") + "  text-red-700 rounded-lg py-2 px-3 w-2/6",
@@ -42867,7 +42868,8 @@ var Caisse = function Caisse() {
         addCash: addCash,
         cash: cash,
         change: change,
-        submit: submit
+        submit: submit,
+        idInvoice: idInvoice
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_ReceiptModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
       showReceiptModal: showReceiptModal,

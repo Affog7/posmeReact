@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {priceFormat, numberFormat} from '../utils/helper'
 import {DEVISE} from '../utils/content'
 const RightSidebar = (props) => {
-    const { cartItems, addToCart, clearCart, removeFromCart, getTotalPrice, addCash, cash, change, submit } = props;
+    const { cartItems, addToCart, clearCart, removeFromCart, getTotalPrice, addCash, cash, change, submit , idInvoice} = props;
     const moneys = [2000, 5000, 10000, 20000, 50000, 100000]
     
     return (
@@ -109,7 +109,7 @@ const RightSidebar = (props) => {
             <button onClick={() => submit()} disabled={change < 0 || cartItems.length <= 0} className={"text-white rounded-2xl text-lg w-4/6 py-3 focus:outline-none "+(change >= 0 && cartItems.length > 0 ? "bg-cyan-500 hover:bg-cyan-600" : "bg-blue-gray-200")}>
               VALIDER
             </button>
-            <button onClick={() => alert("contactez Augustin")} disabled={cartItems.length <= 0} className={"flex justify-center m-2 text-lg font-semibold "+( cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200")+ "  text-red-700 rounded-lg py-2 px-3 w-2/6"}>
+            <button onClick={() =>  idInvoice != -1 ?  window.open('invoice_print/'.concat(idInvoice),'_bank') : {} } disabled={cartItems.length <= 0} className={"flex justify-center m-2 text-lg font-semibold "+( cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200")+ "  text-red-700 rounded-lg py-2 px-3 w-2/6"}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 25" width="35" height="25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="5" y="5" width="16" height="16" rx="2" ry="2"/>
                 <line x1="10" y1="7" x2="14" y2="7"/>

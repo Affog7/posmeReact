@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill, faExchangeAlt, faUser, faCalendarAlt, faFileAlt, faCheck, faTimes, faEdit, faTrash, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-const TableComponent = ({ data, fetchData, fetchDataSuccess,addMultipleToCart }) => {
+const TableComponent = ({ data, fetchData, fetchDataSuccess,addMultipleToCart,setIdInvoice }) => {
   const [filter, setFilter] = useState({ receiptNumber: '', clientName: '', creationDate: '' });
 
   useEffect(() => {
@@ -16,6 +16,7 @@ const TableComponent = ({ data, fetchData, fetchDataSuccess,addMultipleToCart })
   };
 
   const handleDetails = (item) => {
+    setIdInvoice(item.id)
     addMultipleToCart(item)
     //console.log(`Supprimer l'élément avec l'ID ${id}`);
   };

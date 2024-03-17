@@ -20,7 +20,7 @@ const Admin = () => {
   const addMultipleToCart = (item) => {  
     setCartItems(item.products);
     setClient({client : item.client, id : item.client_id});
-    setIdInvoice(item.id)
+   // setIdInvoice(item.id)
     setCash(item.change)
     setSeller(item.name)
  };
@@ -36,12 +36,13 @@ const Admin = () => {
       <div> 
       <Layout>
                 <LeftSidebar menu={"/admin/invoices"} />
-                <TableContainer addMultipleToCart={addMultipleToCart} />
+                <TableContainer addMultipleToCart={addMultipleToCart} setIdInvoice={setIdInvoice} />
                 <RightSidebarAdmin                   
                     cartItems = {cartItems}
                     getTotalPrice = {getTotalPrice} 
                     cash = {cash} 
                     seller = {seller}
+                    idInvoice = {idInvoice}
       
                 />
                 

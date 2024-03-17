@@ -795,7 +795,8 @@ var RightSidebar = function RightSidebar(props) {
   var cartItems = props.cartItems,
     getTotalPrice = props.getTotalPrice,
     cash = props.cash,
-    seller = props.seller;
+    seller = props.seller,
+    idInvoice = props.idInvoice;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "w-3/12 flex flex-col bg-blue-gray-50 h-full bg-white pr-4 pl-2 py-4",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -904,7 +905,7 @@ var RightSidebar = function RightSidebar(props) {
           className: "flex justify-center",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: function onClick() {
-              return alert("contactez Augustin");
+              return idInvoice != -1 ? window.open('/invoice_print/'.concat(idInvoice), '_bank') : {};
             },
             disabled: cartItems.length <= 0,
             className: "flex justify-center m-2 text-lg font-semibold " + (cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200") + "  text-red-700 rounded-lg py-2 px-3 w-2/6",
@@ -1013,7 +1014,8 @@ var TableComponent = function TableComponent(_ref) {
   var data = _ref.data,
     fetchData = _ref.fetchData,
     fetchDataSuccess = _ref.fetchDataSuccess,
-    addMultipleToCart = _ref.addMultipleToCart;
+    addMultipleToCart = _ref.addMultipleToCart,
+    setIdInvoice = _ref.setIdInvoice;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
       receiptNumber: '',
       clientName: '',
@@ -1030,6 +1032,7 @@ var TableComponent = function TableComponent(_ref) {
     console.log("\xC9diter l'\xE9l\xE9ment avec l'ID ".concat(id));
   };
   var handleDetails = function handleDetails(item) {
+    setIdInvoice(item.id);
     addMultipleToCart(item);
     //console.log(`Supprimer l'élément avec l'ID ${id}`);
   };
@@ -1210,7 +1213,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
     fetchDataSuccess: function fetchDataSuccess(data) {
       return dispatch((0,_actions_dataActions__WEBPACK_IMPORTED_MODULE_1__.fetchDataSuccess)(data));
     },
-    addMultipleToCart: props.addMultipleToCart
+    addMultipleToCart: props.addMultipleToCart,
+    setIdInvoice: props.setIdInvoice
   };
 };
 var TableContainer = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(_components_TableComponent__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -60376,7 +60380,7 @@ var Admin = function Admin() {
       client: item.client,
       id: item.client_id
     });
-    setIdInvoice(item.id);
+    // setIdInvoice(item.id)
     setCash(item.change);
     setSeller(item.name);
   };
@@ -60392,12 +60396,14 @@ var Admin = function Admin() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_LeftSidebar__WEBPACK_IMPORTED_MODULE_5__["default"], {
           menu: "/admin/invoices"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_containers_TableContainer__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          addMultipleToCart: addMultipleToCart
+          addMultipleToCart: addMultipleToCart,
+          setIdInvoice: setIdInvoice
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_RightSidebarAdmin__WEBPACK_IMPORTED_MODULE_7__["default"], {
           cartItems: cartItems,
           getTotalPrice: getTotalPrice,
           cash: cash,
-          seller: seller
+          seller: seller,
+          idInvoice: idInvoice
         })]
       })
     })
