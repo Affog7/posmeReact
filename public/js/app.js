@@ -24,6 +24,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
 var FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+
+// invoices
 var fetchData = function fetchData() {
   return /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(dispatch) {
@@ -441,7 +443,7 @@ var LeftSidebar = function LeftSidebar(props) {
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-            href: "#",
+            href: "/admin/settings",
             className: "flex items-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "flex items-center justify-center text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl",

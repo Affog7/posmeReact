@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './utils/store';
 import TableContainer from './containers/TableContainer';
-import { fetchData } from './actions/dataActions';
 import LeftSidebar from './components/LeftSidebar';
 import Layout from './components/Layout';
 import RightSidebarAdmin from './components/RightSidebarAdmin';
@@ -56,5 +55,5 @@ const Admin = () => {
 export default Admin;
 const container =  document.getElementById('admin') 
 
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container);  
 root.render(<Admin  />);

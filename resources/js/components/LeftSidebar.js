@@ -59,7 +59,7 @@ const LeftSidebar = props => {
                     </a>
                 </li>
                     <li>
-                        <a href="#"
+                        <a href="/admin/settings"
                         className="flex items-center">
                         <span className="flex items-center justify-center text-cyan-100 hover:bg-cyan-400 h-12 w-12 rounded-2xl">
                             <svg className="w-6 h-6"

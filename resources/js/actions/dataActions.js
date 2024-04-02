@@ -2,7 +2,8 @@
 import web from '../utils/web'
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS"
 export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE"
-
+ 
+// invoices
 export const fetchData = () =>  {
     return async (dispatch) => {
       try {
@@ -17,7 +18,7 @@ export const fetchData = () =>  {
       }
     };
   };
-
+ 
   export const  saveCustomer = (email,tel,address,nom) => {
       web.post('saveCustomer', {
           email: email,
@@ -41,4 +42,3 @@ export const fetchData = () =>  {
     type: FETCH_DATA_SUCCESS,
     payload: data,
   });
-  

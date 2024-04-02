@@ -7,6 +7,7 @@ import LeftSidebar from './components/LeftSidebar'
 import ReceiptModal from './components/ReceiptModal'
 import RightSidebar from './components/RightSidebar'
 import CaisseMode from './pages/CaisseMode'
+import { createRoot } from 'react-dom/client'
 
 const Caisse = () => {
     const [cartItems, setCartItems] = useState([])
@@ -115,6 +116,7 @@ const Caisse = () => {
     return (
         <>
             <Layout>
+
                 <LeftSidebar menu={"/caisse"} />
                 <CaisseMode addMultipleToCart={addMultipleToCart} />
                 <RightSidebar
@@ -148,5 +150,8 @@ const Caisse = () => {
         </>
     )
 }
+ 
+const container =  document.getElementById('caisse') 
 
-ReactDOM.render( <Caisse />, document.getElementById('caisse') )
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<Caisse  />);

@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CaisseController;
+use App\Http\Controllers\HistoriqueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/caisse', [CaisseController::class, 'index']);
 
     Route::get('/invoices', [CaisseController::class, 'getAllInvoice']);
+    Route::get('/myalltask', [HistoriqueController::class, 'getMyTask']);
+
     Route::get('/invoice_print/{id}', [CaisseController::class, 'getPdfInvoice']);
     Route::post('/saveCustomer', [CustomerController::class, 'store']);
+
+
+    Route::get("/admin/settings", function(){
+        return view("settings");
+    } );
 
     Route::get("/admin/invoices", function(){
         return view("admin.invoices");

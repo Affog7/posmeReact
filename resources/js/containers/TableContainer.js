@@ -6,8 +6,9 @@ import { fetchDataSuccess, fetchData } from '../actions/dataActions';
 const mapStateToProps = (state) => ({
   data: state.data,
 });
- const mapDispatchToProps = (dispatch, props) => ({
-  fetchData: () => dispatch(fetchData()), // Appelle fetchData en tant que fonction
+ 
+const mapDispatchToProps = (dispatch, props) => ({
+  fetchData: () => dispatch(fetchData()), // Appel fetchData en tant que fonction
   fetchDataSuccess: (data) => dispatch(fetchDataSuccess(data)),
   addMultipleToCart: props.addMultipleToCart ,
   setIdInvoice: props.setIdInvoice ,

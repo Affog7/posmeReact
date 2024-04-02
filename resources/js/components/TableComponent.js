@@ -7,7 +7,7 @@ const TableComponent = ({ data, fetchData, fetchDataSuccess,addMultipleToCart,se
   const [filter, setFilter] = useState({ receiptNumber: '', clientName: '', creationDate: '' });
 
   useEffect(() => {
-    fetchData();
+    fetchData(); 
   }, [fetchDataSuccess]);
 
   const handleEdit = (id) => {
