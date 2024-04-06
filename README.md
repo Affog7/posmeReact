@@ -4,6 +4,8 @@
 ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/caisse.png)
 ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/facturer.png)
 ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/admin1.png)
+![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/client.png)
+![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/paramettre.png)
 ## About Actiry POS
 
 PosmeReact Implementation from https://github.com/Affog7/posmeReact. Using different technology. Which is laravel for backend and react js for front end UI. And plus laravel authentication.
