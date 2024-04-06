@@ -10,6 +10,7 @@ import TableComponentHistorique from './components/TableComponentHistorique';
 import TableContainer from './containers/TableContainer';
 import TableContainerHistorique from './containers/TableContainerHistorique';
 import TableContainerAllHistorique from './containers/TableContainerAllHistorique';
+import ReportsContainer from './containers/ReportContainer';
 
 const Setting = () => {
   return (
@@ -19,6 +20,7 @@ const Setting = () => {
             <LeftSidebar menu={"/settings"} />
            <TableContainerHistorique /> 
            <TableContainerAllHistorique /> 
+           <ReportsContainer /> 
         </Layout>
       </div>
     </Provider>

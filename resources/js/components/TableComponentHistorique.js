@@ -9,12 +9,7 @@ const TableComponentHistorique = ({ data1,fetchHData, fetchDataHSuccess  }) => {
   useEffect(() => {
     fetchHData();
   }, [fetchDataHSuccess]);
-
-  const handleEdit = (id) => {
-    console.log(`Éditer l'élément avec l'ID ${id}`);
-    console.log(dataAH);
-  };
-
+ 
   const filteredData = data1.filter((item) =>
   item.action.toUpperCase().includes(filter.action.toUpperCase()) &&
   item.modele.toUpperCase().includes(filter.modele.toUpperCase()) 
@@ -23,9 +18,9 @@ const TableComponentHistorique = ({ data1,fetchHData, fetchDataHSuccess  }) => {
     setFilter({ ...filter, [filterType]: e.target.value });
   };
   return (
-    <div className="overflow-x-auto ">
+    <div className="overflow-x-auto p-2">
       <div className="flex justify-center mt-4">
-        <h1 className="text-2xl font-bold mb-2">Filtres</h1>
+        <h3 className="text-2xl font-bold mb-2">Filtres</h3>
       </div>
         
       <div className="flex justify-center mb-4">
@@ -53,7 +48,7 @@ const TableComponentHistorique = ({ data1,fetchHData, fetchDataHSuccess  }) => {
             <th className="py-3 px-4 border-b"><FontAwesomeIcon icon={faUser} className="mr-2" /> Modele</th>
             <th className="py-3 px-4 border-b"><FontAwesomeIcon icon={faCalendarAlt} className="mr-2" /> Action</th>
             <th className="py-3 px-4 border-b"><FontAwesomeIcon icon={faFileAlt} className="mr-2" /> Date</th>
-            <th className="py-3 px-4 border-b">Actions</th>
+             
           </tr>
         </thead>
         <tbody>
@@ -61,14 +56,8 @@ const TableComponentHistorique = ({ data1,fetchHData, fetchDataHSuccess  }) => {
             <tr key={item.id} className="hover:bg-gray-50 transition-all">
               <td className="py-3 px-4 border-b text-center">{item.modele}</td>
               <td className="py-3 px-4 border-b text-center">{item.action}</td>
-              <td className="py-3 px-4 border-b text-center">{item.created_at}</td> 
+              <td className="py-3 px-4 border-b text-center">{new Date(item.created_at).toLocaleString()}</td> 
                
-              <td className="py-3 px-4 border-b">
-                <button onClick={() => handleEdit(item.id)} className="text-blue-500 mr-2 focus:outline-none">
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                </button>
-                 
-              </td>
             </tr>
           ))}
         </tbody>

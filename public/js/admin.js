@@ -555,10 +555,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FETCH_DATA_FAILURE: () => (/* binding */ FETCH_DATA_FAILURE),
 /* harmony export */   FETCH_DATA_SUCCESS1: () => (/* binding */ FETCH_DATA_SUCCESS1),
 /* harmony export */   FETCH_DATA_SUCCESS_H_ALL: () => (/* binding */ FETCH_DATA_SUCCESS_H_ALL),
+/* harmony export */   FETCH_DATA_SUCCESS_REPORTS: () => (/* binding */ FETCH_DATA_SUCCESS_REPORTS),
 /* harmony export */   fetchAllHistorique: () => (/* binding */ fetchAllHistorique),
 /* harmony export */   fetchDataAHSuccess: () => (/* binding */ fetchDataAHSuccess),
 /* harmony export */   fetchDataHSuccess: () => (/* binding */ fetchDataHSuccess),
+/* harmony export */   fetchDataReportSuccess: () => (/* binding */ fetchDataReportSuccess),
 /* harmony export */   fetchDayHistorique: () => (/* binding */ fetchDayHistorique),
+/* harmony export */   fetchReportData: () => (/* binding */ fetchReportData),
 /* harmony export */   fetchTodayHistorique: () => (/* binding */ fetchTodayHistorique)
 /* harmony export */ });
 /* harmony import */ var _utils_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/web */ "./resources/js/utils/web.js");
@@ -570,6 +573,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 var FETCH_DATA_SUCCESS1 = "FETCH_DATA_H_SUCCESS";
 var FETCH_DATA_SUCCESS_H_ALL = "FETCH_DATA_H_SUCCESS_ALL";
+var FETCH_DATA_SUCCESS_REPORTS = "FETCH_DATA_SUCCESS_REPORT";
 var fetchTodayHistorique = function fetchTodayHistorique() {
   return /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(dispatch) {
@@ -690,6 +694,50 @@ var fetchDayHistorique = function fetchDayHistorique(dateat) {
       return _ref3.apply(this, arguments);
     };
   }();
+};
+var fetchReportData = function fetchReportData(dateat) {
+  return /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(dispatch) {
+      return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+        while (1) switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return _utils_web__WEBPACK_IMPORTED_MODULE_0__["default"].post('/myallreports', {
+              dateat: dateat
+            }).then(function (response) {
+              if (response.status === 200) {
+                var data = response.data;
+                dispatch({
+                  type: FETCH_DATA_SUCCESS_REPORTS,
+                  payload: data
+                });
+              } else {
+                alert('Error. Please try again 0');
+              }
+            })["catch"](function (error) {
+              console.log(error);
+              alert('Error. Please try again 1');
+              dispatch({
+                type: FETCH_DATA_FAILURE,
+                payload: error.message
+              });
+            });
+          case 2:
+          case "end":
+            return _context4.stop();
+        }
+      }, _callee4);
+    }));
+    return function (_x4) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+};
+var fetchDataReportSuccess = function fetchDataReportSuccess(data) {
+  return {
+    type: FETCH_DATA_SUCCESS_REPORTS,
+    payload: data
+  };
 };
 var fetchDataHSuccess = function fetchDataHSuccess(data) {
   return {
@@ -1412,7 +1460,8 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 var initialState = {
   data: [],
   data1: [],
-  dataAH: []
+  dataAH: [],
+  dataReports: []
 };
 var reducer = function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -1429,6 +1478,10 @@ var reducer = function reducer() {
     case _actions_historiqueActions__WEBPACK_IMPORTED_MODULE_1__.FETCH_DATA_SUCCESS_H_ALL:
       return _objectSpread(_objectSpread({}, state), {}, {
         dataAH: action.payload
+      });
+    case _actions_historiqueActions__WEBPACK_IMPORTED_MODULE_1__.FETCH_DATA_SUCCESS_REPORTS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        dataReports: action.payload
       });
     default:
       return state;

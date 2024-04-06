@@ -26,7 +26,12 @@ class HistoriqueController extends Controller
         if(!$date)  $date = Carbon::today();
        
         $historiques = auth()->user()->historiques()->whereDate('created_at', $date)->take(50)->get();
-    
+        foreach( $historiques as $his) {
+            $his->reports_details = DB::select('
+                select * from '.$his->modele.' where id = '.$his->modele_id.'
+            ');       
+             
+         }
          return response()->json($historiques);
     }
 
@@ -54,25 +59,49 @@ class HistoriqueController extends Controller
         }
     }
 
-    public function getReport($date = null) {
-       
-       
-        if(!$date)  $date = Carbon::today();
-       $historiques = auth()->user()->historiques()->where('modele','invoices')->get();
-     foreach( $historiques as $his){
-        $his->reports = DB::select('
-            select * from '.$his->modele.' where id = '.$his->modele_id.' 
-        ');
+
+
+
+    public function getReport(Request $req) {
+        $montant_total_caisse = 0;
+        $montant_total_vente = 0;
+        $montant_total_paye = 0;
+        $montant_total_impaye = 0;
+
+      
+        $dateat = $req->dateat;
+        $dateat = ($dateat != null) ? Carbon::createFromFormat('d/m/Y', $dateat) : Carbon::today();
+        
+    // take all invoices by date
+    $historiques = auth()->user()->historiques()
+    
+    ->where('modele','invoices')
+    ->whereDate('created_at', $dateat)
+    ->groupBy("user_id","modele","modele_id",)
+                    ->get();
+
+    // select occurrence
+    foreach( $historiques as $his) {
+        $his->reports_details = DB::select('
+            select * from '.$his->modele.' where id = '.$his->modele_id.'
+        ');       
+         
      }
 
-dd($historiques);
-        $reports =  
+        $reports = auth()->user()->reports()
+        ->selectRaw('is_paid, SUM(total_amount) as total')
+        ->whereDate('created_at', $dateat)
+        ->groupBy('is_paid')->get();
+ 
+        foreach($reports as $re){
+            if($re->is_paid) $montant_total_paye = $re->total;
+            if(!$re->is_paid) $montant_total_impaye = $re->total;
+        }
         
-        auth()->user()->reports()
-        ->selectRaw('DATE_FORMAT(created_at, "%d/%m/%Y") as date, SUM(total_amount) as total')
-        ->groupBy('date')
-        ->whereDate('created_at', $date)->get();
-         return response()->json($reports);
+         return response()->json([
+                                "montant_total_direct_paye" => $montant_total_paye,
+                                "montant_total_direct_impaye" => $montant_total_impaye,
+                                "details" => $historiques]);
     }
  
     /**

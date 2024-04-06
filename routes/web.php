@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/myalltask/at', [HistoriqueController::class, 'fetchHistoriqueAt']);
 
 
-    Route::get('/myallreports', [HistoriqueController::class, 'getReport']);
+    Route::post('/myallreports', [HistoriqueController::class, 'getReport']);
 
     Route::get('/invoice_print/{id}', [CaisseController::class, 'getPdfInvoice']);
     Route::post('/saveCustomer', [CustomerController::class, 'store']);
