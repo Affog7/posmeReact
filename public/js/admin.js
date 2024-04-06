@@ -554,7 +554,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   FETCH_DATA_FAILURE: () => (/* binding */ FETCH_DATA_FAILURE),
 /* harmony export */   FETCH_DATA_SUCCESS1: () => (/* binding */ FETCH_DATA_SUCCESS1),
+/* harmony export */   FETCH_DATA_SUCCESS_H_ALL: () => (/* binding */ FETCH_DATA_SUCCESS_H_ALL),
+/* harmony export */   fetchAllHistorique: () => (/* binding */ fetchAllHistorique),
+/* harmony export */   fetchDataAHSuccess: () => (/* binding */ fetchDataAHSuccess),
 /* harmony export */   fetchDataHSuccess: () => (/* binding */ fetchDataHSuccess),
+/* harmony export */   fetchDayHistorique: () => (/* binding */ fetchDayHistorique),
 /* harmony export */   fetchTodayHistorique: () => (/* binding */ fetchTodayHistorique)
 /* harmony export */ });
 /* harmony import */ var _utils_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/web */ "./resources/js/utils/web.js");
@@ -565,6 +569,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
 var FETCH_DATA_SUCCESS1 = "FETCH_DATA_H_SUCCESS";
+var FETCH_DATA_SUCCESS_H_ALL = "FETCH_DATA_H_SUCCESS_ALL";
 var fetchTodayHistorique = function fetchTodayHistorique() {
   return /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(dispatch) {
@@ -607,10 +612,95 @@ var fetchTodayHistorique = function fetchTodayHistorique() {
     };
   }();
 };
-var fetchDataHSuccess = function fetchDataHSuccess(data1) {
+var fetchAllHistorique = function fetchAllHistorique() {
+  return /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(dispatch) {
+      var response, data;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return (0,_utils_web__WEBPACK_IMPORTED_MODULE_0__["default"])('/getAllTasks');
+          case 3:
+            response = _context2.sent;
+            _context2.next = 6;
+            return response.data;
+          case 6:
+            data = _context2.sent;
+            dispatch({
+              type: FETCH_DATA_SUCCESS_H_ALL,
+              payload: data
+            });
+            _context2.next = 14;
+            break;
+          case 10:
+            _context2.prev = 10;
+            _context2.t0 = _context2["catch"](0);
+            console.log(_context2.t0);
+            dispatch({
+              type: FETCH_DATA_FAILURE,
+              payload: _context2.t0.message
+            });
+          case 14:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[0, 10]]);
+    }));
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+};
+var fetchDayHistorique = function fetchDayHistorique(dateat) {
+  return /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(dispatch) {
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return _utils_web__WEBPACK_IMPORTED_MODULE_0__["default"].post('/myalltask/at/', {
+              dateat: dateat
+            }).then(function (response) {
+              if (response.status === 200) {
+                var data = response.data;
+                dispatch({
+                  type: FETCH_DATA_SUCCESS1,
+                  payload: data
+                });
+              } else {
+                alert('Error. Please try again 0');
+              }
+            })["catch"](function (error) {
+              console.log(error);
+              alert('Error. Please try again 1');
+              dispatch({
+                type: FETCH_DATA_FAILURE,
+                payload: error.message
+              });
+            });
+          case 2:
+          case "end":
+            return _context3.stop();
+        }
+      }, _callee3);
+    }));
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+};
+var fetchDataHSuccess = function fetchDataHSuccess(data) {
   return {
     type: FETCH_DATA_SUCCESS1,
-    payload: data1
+    payload: data
+  };
+};
+var fetchDataAHSuccess = function fetchDataAHSuccess(data) {
+  return {
+    type: FETCH_DATA_SUCCESS_H_ALL,
+    payload: data
   };
 };
 
@@ -1320,15 +1410,25 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 
 var initialState = {
-  data: []
+  data: [],
+  data1: [],
+  dataAH: []
 };
 var reducer = function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   switch (action.type) {
-    case (_actions_dataActions__WEBPACK_IMPORTED_MODULE_0__.FETCH_DATA_SUCCESS, _actions_historiqueActions__WEBPACK_IMPORTED_MODULE_1__.FETCH_DATA_SUCCESS1):
+    case _actions_dataActions__WEBPACK_IMPORTED_MODULE_0__.FETCH_DATA_SUCCESS:
       return _objectSpread(_objectSpread({}, state), {}, {
         data: action.payload
+      });
+    case _actions_historiqueActions__WEBPACK_IMPORTED_MODULE_1__.FETCH_DATA_SUCCESS1:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        data1: action.payload
+      });
+    case _actions_historiqueActions__WEBPACK_IMPORTED_MODULE_1__.FETCH_DATA_SUCCESS_H_ALL:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        dataAH: action.payload
       });
     default:
       return state;

@@ -1249,7 +1249,6 @@ var CaisseMode = function CaisseMode(props) {
               _context.prev = 8;
               _context.t0 = _context["catch"](0);
               console.error('Error fetching invoices:', _context.t0);
-              // Gérez l'erreur selon vos besoins, par exemple, affichez un message d'erreur à l'utilisateur
             case 11:
               _context.prev = 11;
               setIsLoading(false);

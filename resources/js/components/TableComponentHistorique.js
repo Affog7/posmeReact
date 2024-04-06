@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill, faExchangeAlt, faUser, faCalendarAlt, faFileAlt, faCheck, faTimes, faEdit, faTrash, faEyeSlash, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
-const TableComponentHistorique = ({ data1, fetchHData, fetchDataHSuccess  }) => {
+const TableComponentHistorique = ({ data1,fetchHData, fetchDataHSuccess  }) => {
   const [filter, setFilter] = useState({ action: '', modele: '' });
 
   useEffect(() => {
@@ -11,8 +11,8 @@ const TableComponentHistorique = ({ data1, fetchHData, fetchDataHSuccess  }) => 
   }, [fetchDataHSuccess]);
 
   const handleEdit = (id) => {
-    // Ajouter la logique d'édition ici
     console.log(`Éditer l'élément avec l'ID ${id}`);
+    console.log(dataAH);
   };
 
   const filteredData = data1.filter((item) =>
@@ -24,8 +24,11 @@ const TableComponentHistorique = ({ data1, fetchHData, fetchDataHSuccess  }) => 
   };
   return (
     <div className="overflow-x-auto ">
-      <div className="flex justify-center mt-4"><h1 className="text-2xl font-bold mb-2">Filtres</h1></div>
-        <div className="flex justify-center mb-4">
+      <div className="flex justify-center mt-4">
+        <h1 className="text-2xl font-bold mb-2">Filtres</h1>
+      </div>
+        
+      <div className="flex justify-center mb-4">
         
         <input
           type="text"
@@ -70,6 +73,7 @@ const TableComponentHistorique = ({ data1, fetchHData, fetchDataHSuccess  }) => 
           ))}
         </tbody>
       </table>
+     
     </div>
   );
 };

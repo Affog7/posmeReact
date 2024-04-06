@@ -28,7 +28,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/caisse', [CaisseController::class, 'index']);
 
     Route::get('/invoices', [CaisseController::class, 'getAllInvoice']);
+
     Route::get('/myalltask', [HistoriqueController::class, 'getMyTask']);
+    Route::get('/getAllTasks', [HistoriqueController::class, 'getMyAllTask']);
+    Route::post('/myalltask/at', [HistoriqueController::class, 'fetchHistoriqueAt']);
+
+
+    Route::get('/myallreports', [HistoriqueController::class, 'getReport']);
 
     Route::get('/invoice_print/{id}', [CaisseController::class, 'getPdfInvoice']);
     Route::post('/saveCustomer', [CustomerController::class, 'store']);

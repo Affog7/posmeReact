@@ -1,10 +1,10 @@
 // TableContainer.js
 import { connect } from 'react-redux';
 import TableComponentHistorique from '../components/TableComponentHistorique';
-import { fetchDataHSuccess, fetchTodayHistorique } from '../actions/historiqueActions';
+import { fetchAllHistorique, fetchDataAHSuccess, fetchDataHSuccess, fetchTodayHistorique } from '../actions/historiqueActions';
 
 const mapStateToProps = (state) => ({
-  data1: state.data,
+  data1: state.data1,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Historique;
+use App\Models\Invoice;
 
 class User extends Authenticatable
 {
@@ -45,4 +46,9 @@ class User extends Authenticatable
     public function historiques() {
         return $this->hasMany(Historique::class, 'user_id');
     }
+
+    public function reports() {
+        return $this->hasMany(Invoice::class, 'user_id');
+    }
+
 }

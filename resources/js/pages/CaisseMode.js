@@ -18,7 +18,6 @@ const CaisseMode = (props) => {
             setInvoices(result.data);
           } catch (error) {
             console.error('Error fetching invoices:', error);
-            // Gérez l'erreur selon vos besoins, par exemple, affichez un message d'erreur à l'utilisateur
           } finally {
             setIsLoading(false);
           }
