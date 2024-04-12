@@ -99,3 +99,5 @@ Traçabilité améliorée : En utilisant la blockchain, chaque étape de la fabr
 Sécurité et confidentialité : Les données enregistrées sur la blockchain sont cryptées et sécurisées, réduisant ainsi les risques de fraude ou de piratage. De plus, les informations sensibles peuvent être partagées de manière sélective avec les partenaires autorisés, garantissant ainsi la confidentialité.
 
 Différenciation concurrentielle : En adoptant une technologie innovante comme la blockchain, votre société de conception de pneus peut se démarquer de la concurrence en démontrant son engagement envers la transparence, la qualité et l'innovation technologique.
+
+## SOurce : Bing, Google, Connaissance Personnelles, Github
