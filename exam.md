@@ -41,7 +41,7 @@ Durant la conception des pneus plusieurs acteurs interviennent, les fournisseurs
 
 ## 5. Code / avancement
 ### Contract de transaction de fond entre les fournisseurs et le fabricant
-
+voir : <a href="https://github.com/Affog7/posmeReact/blob/master/TranslationContract.sol"> Paiement Contract</a> <br/>
 Livrable adresse de déploiement :  0x3e0fccc953aad425142d880f90c2e00ff0e61572
 
 ## 6. Livrables
