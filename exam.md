@@ -30,15 +30,18 @@ Durant la conception des pneus plusieurs acteurs interviennent, les fournisseurs
   2. Contract de tracabilité : ce contrat est utilisé pour enregistrer les differentes proccess de la fabrication des pneus
   3. Contract de transaction de fond entre les fournisseurs et le fabricant
 
-## 3. Programmation blockchain
-    * Choix de la blockchain
-        - B2B entre le fabricant de pneus et le fournisseurs
-        - B2C entre le fabricant et les clients
+## 3. Programmation blockchain.
+* Choix de la blockchain
+    - B2B entre le fabricant de pneus et le fournisseurs
+    - B2C entre le fabricant et les clients
         
-## 4. Design blockchain
-        - B2B entre le fabricant de pneus et le fournisseurs sur un contrat qui déclenche le versement des fonds après livraisons des matières premières
-        - B2C entre le fabricant et les clients avec un smart contrat qui fournir des informations à partir de l'approvisionnement jusqu'au la fabrication du pneus.
+## 4. Design blockchain 
+- B2B entre le fabricant de pneus et le fournisseurs sur un contrat qui déclenche le versement des fonds après livraisons des matières premières
+- B2C entre le fabricant et les clients avec un smart contrat qui fournir des informations à partir de l'approvisionnement jusqu'au la fabrication du pneus.
 
 ## 5. Code / avancement
+### Contract de transaction de fond entre les fournisseurs et le fabricant
+
+Livrable adresse de déploiement :  0x3e0fccc953aad425142d880f90c2e00ff0e61572
 
 ## 6. Livrables
