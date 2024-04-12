@@ -95,7 +95,8 @@ Livrable adresse de déploiement du contract :  0x987c1c788eb636965fddf0989dd252
 ## CONCLUSION
 Enfin pour convaincre le directeur voici quelques avantages de mon poc : <br/>
 Traçabilité améliorée : En utilisant la blockchain, chaque étape de la fabrication des pneus peut être enregistrée de manière transparente et immuable, ce qui permet une traçabilité précise depuis les matières premières jusqu'au produit final. Cela peut renforcer la confiance des clients et garantir la qualité.
-Ainsi les clients depuis leur terminal peut récupérer des données vraies sur la fabrication des pneus. Généralement via une application qui utilise le web3.js un technologie pour communiquer avec la blockchain.
+Ainsi les clients depuis leur terminal peut récupérer des données vraies sur la fabrication des pneus. Généralement via une application qui utilise le web3.js une technologie pour communiquer avec la blockchain.
+
 Sécurité et confidentialité : Les données enregistrées sur la blockchain sont cryptées et sécurisées, réduisant ainsi les risques de fraude ou de piratage. De plus, les informations sensibles peuvent être partagées de manière sélective avec les partenaires autorisés, garantissant ainsi la confidentialité.
 
 Différenciation concurrentielle : En adoptant une technologie innovante comme la blockchain, la société peut se démarquer de la concurrence en démontrant son engagement envers la transparence, la qualité et l'innovation technologique.
