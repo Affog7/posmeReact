@@ -18,11 +18,26 @@ Durant la conception des pneus plusieurs acteurs interviennent, les fournisseurs
   - Différenciation concurrentielle : En adoptant une technologie innovante comme la blockchain, votre société de conception de pneus peut se démarquer de la concurrence en démontrant son engagement envers la transparence, la qualité et l'innovation technologique.
 
 ## 2. Modélisation
-
+- Participants
+   1. Fournisseurs de matières première
+   2. Fabricant de pneus
+   3. Clients ou Acheteurs
+- Assets : Les Pneus
+  
+- Transactions et règle business
+  1. Transaction entre le fournisseur de matières premières et le fabricant de pneus par un contract intelligent base sur les NFTs. <br/>
+      Explication : Des fichiers images seront fournis par les fournisseurs sur l'originaliné des matières ainsi que leur source. Un contrat d'approvisionnement sera donc utilisé
+  2. Contract de tracabilité : ce contrat est utilisé pour enregistrer les differentes proccess de la fabrication des pneus
+  3. Contract de transaction de fond entre les fournisseurs et le fabricant
 
 ## 3. Programmation blockchain
-
+    * Choix de la blockchain
+        - B2B entre le fabricant de pneus et le fournisseurs
+        - B2C entre le fabricant et les clients
+        
 ## 4. Design blockchain
+        - B2B entre le fabricant de pneus et le fournisseurs sur un contrat qui déclenche le versement des fonds après livraisons des matières premières
+        - B2C entre le fabricant et les clients avec un smart contrat qui fournir des informations à partir de l'approvisionnement jusqu'au la fabrication du pneus.
 
 ## 5. Code / avancement
 
