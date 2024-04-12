@@ -44,4 +44,8 @@ Durant la conception des pneus plusieurs acteurs interviennent, les fournisseurs
 voir : <a href="https://github.com/Affog7/posmeReact/blob/master/TranslationContract.sol"> Paiement Contract</a> <br/>
 Livrable adresse de déploiement :  0x3e0fccc953aad425142d880f90c2e00ff0e61572
 
+### Contract NFT d'approvisionnement
+voir : <a href="https://github.com/Affog7/posmeReact/tree/master"> Contract Approvisionnement</a> <br/>
+Livrable adresse de déploiement du contract :  0x79d8ba43974fb87b2fc9d8318cd80f827cd05af7
+
 ## 6. Livrables
