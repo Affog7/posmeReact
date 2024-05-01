@@ -7,6 +7,7 @@ import LeftSidebar from './components/LeftSidebar'
 import ReceiptModal from './components/ReceiptModal'
 import RightSidebar from './components/RightSidebar'
 import ProductMode from './pages/ProductMode'
+import { AUDIO_21, AUDIO_29, HREF_HOME, PAGE_HOME_ID, SHOP_POS_CODE } from './utils/content'
 
 const App = () => {
     const [cartItems, setCartItems] = useState([])
@@ -27,11 +28,11 @@ const App = () => {
     }
 
     const beep = () => {
-        playSound("sound/beep-29.mp3");
+        playSound(AUDIO_29);
     }
 
     const clearSound = () => {
-        playSound("sound/button-21.mp3");
+        playSound(AUDIO_21);
     }
 
     const getTotalPrice = () => {
@@ -89,7 +90,7 @@ const App = () => {
         const time = new Date();
         setShowReceiptModal(true)
         setReceipt({
-            receiptNo : `ACPOS-KS-${Math.round(time.getTime() / 1000)}`,
+            receiptNo : `${SHOP_POS_CODE}-${Math.round(time.getTime() / 1000)}`,
             receiptDate : dateFormat(time)
         })
     }
@@ -105,7 +106,7 @@ const App = () => {
     return (
         <>
             <Layout>
-                <LeftSidebar menu={"/"} />
+                <LeftSidebar menu={HREF_HOME} />
                 <ProductMode addToCart={addToCart} />
                 <RightSidebar
                     clearCart={clearCart}
@@ -139,4 +140,4 @@ const App = () => {
     )
 }
 
-ReactDOM.render( <App />, document.getElementById('root') )
+ReactDOM.render( <App />, document.getElementById(PAGE_HOME_ID) )

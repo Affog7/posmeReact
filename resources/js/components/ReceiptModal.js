@@ -12,7 +12,6 @@ const ReceiptModal = (props) => {
     // pour mettre à jour
     const handleDataUpdate  = (value) => {
         setClientId(value);
-        //console.log(value);
       };
     
     const printAndCaisse = async () => {
@@ -39,7 +38,7 @@ const ReceiptModal = (props) => {
         })
         .then((response) => {
             setProcessing(false)
-            console.log(response)
+           // console.log(response)
             if(response.status === 200 && response.data.success === 1) {
                 const titleBefore = document.title
                 document.title = receipt.receiptNo

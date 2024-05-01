@@ -1,3 +1,5 @@
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
  
 const ReportComponentDisplay = ({ data }) => {
@@ -10,7 +12,7 @@ const ReportComponentDisplay = ({ data }) => {
   const totalUpdate = updateDetails?.reduce((acc, curr) => acc + Number(curr.reports_details[0].total_amount), 0);
 
   return (
-    <div className="p-1">
+    <div className=" overflow-x-auto p-1 m-1 rounded-md   w-2/3">
         
       <div className="flex justify-center mt-4">
         <h3 className="text-2xl font-bold mb-2">Comptabilité</h3>
@@ -47,7 +49,7 @@ const ReportComponentDisplay = ({ data }) => {
                 <td className="py-3 px-2 border-b  ">
                     <ul>
                                 {insertDetails?.map(detail => (
-                                <li key={detail.id} className="mb-4">
+                                <li key={detail.id} className="mb-4 border border-dashed border-gray-300 p-1 m-0.5">
                                     <h3 className="text-md font-bold">Modèle: {detail.modele}</h3>
                                     <p>Date de création: {new Date(detail.created_at).toLocaleString()}</p>
                                     <h4 className="text-md font-bold">Rapports:</h4>
@@ -68,7 +70,7 @@ const ReportComponentDisplay = ({ data }) => {
                 <td className="py-3 px-2 border-b ">
                     <ul>
                         {updateDetails?.map(detail => (
-                        <li key={detail.id} className="mb-4">
+                        <li key={detail.id} className="mb-4 border border-dashed border-gray-300 p-1 m-0.5">
                             <h3 className="text-md font-bold">Modèle: {detail.modele}</h3>
                             <p>Date de création: {new Date(detail.created_at).toLocaleString()}</p>
                             <h4 className="text-md font-bold">Rapports:</h4>
@@ -93,8 +95,12 @@ const ReportComponentDisplay = ({ data }) => {
         </table>
         
       </div> 
+      
       <div className="justify-center mt-2">
-        <button  class="text-white rounded-2xl text-lg w-full   focus:outline-none bg-blue-500">EXPORTER</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-150 ease-in-out">
+        Imprimer  <FontAwesomeIcon icon={faFilePdf} />
+      </button>
+
       </div>
     </div>
   );
