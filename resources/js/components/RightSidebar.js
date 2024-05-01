@@ -110,7 +110,7 @@ const RightSidebar = (props) => {
               VALIDER
             </button>
             <button onClick={() =>  idInvoice != -1 ?  window.open('invoice_print/'.concat(idInvoice),'_bank') : {} } disabled={cartItems.length <= 0} className={"flex justify-center m-2 text-lg font-semibold "+( cartItems.length > 0 ? "bg-yellow-300" : "bg-blue-gray-200")+ "  text-red-700 rounded-lg py-2 px-3 w-2/6"}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 25" width="35" height="25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 25" width="35" height="25" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="5" y="5" width="16" height="16" rx="2" ry="2"/>
                 <line x1="10" y1="7" x2="14" y2="7"/>
                 <line x1="10" y1="11" x2="14" y2="11"/>
@@ -118,7 +118,7 @@ const RightSidebar = (props) => {
                 <line x1="10" y1="15" x2="14" y2="15"/>
                 <line x1="10" y1="19" x2="14" y2="19"/>
                 <line x1="7" y1="7" x2="7" y2="17"/>
-                <text x="20%" y="50%"  alignment-baseline="bottom" text-anchor="bottom" font-size="15" fill="#FFFFFF">FAC</text>
+                <text x="20%" y="50%"  alignment-baseline="bottom" text-anchor="bottom" fontSize="15" fill="#FFFFFF">FAC</text>
               </svg>
             </button>
            </div>

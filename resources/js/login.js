@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom'
 import React, {useRef, useState} from 'react'
 import web from './utils/web'
+import { SHOP_NAME, SHOP_POS } from './utils/content'
 
 const Login = () => {
     const usernameRef = useRef()
@@ -26,7 +27,7 @@ const Login = () => {
             if(error.response.status === 422) {
                 setError('Please check your input')
             }else{
-                setError('Silahkan coba reload browser')
+                setError('please reload browser')
             }
         })
     }
@@ -39,8 +40,8 @@ const Login = () => {
                     <div className="text-left w-full text-sm p-6 overflow-auto">
                         <div className="text-center mb-5">
                             <img src="img/logo.png" className="w-10 m-auto" />
-                            <h2 className="text-xl font-semibold">ACTIRY POS</h2>
-                            <p>AUGAFF SHOP</p>
+                            <h2 className="text-xl font-semibold">{SHOP_POS}</h2>
+                            <p>{SHOP_NAME}</p>
                         </div>
                         { error !== '' &&
                             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-5" role="alert">

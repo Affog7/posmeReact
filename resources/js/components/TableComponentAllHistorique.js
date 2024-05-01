@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill, faExchangeAlt, faUser, faCalendarAlt, faFileAlt, faCheck, faTimes, faEdit, faTrash, faEyeSlash, faInfoCircle, faFolderOpen, faBank, faMoneyBillAlt, faMoneyBillWave, faMoneyBills, faWallet } from '@fortawesome/free-solid-svg-icons';
 import { fetchDayHistorique } from '../actions/historiqueActions';
+import TableContainerHistorique from '../containers/TableContainerHistorique';
 
 const TableComponentAllHistorique = ({ data1,fetchHData, fetchDataHSuccess, handleEdit, handleReport  }) => {
   const [filter, setFilter] = useState({ total: '', date: '' });
@@ -26,7 +27,7 @@ const TableComponentAllHistorique = ({ data1,fetchHData, fetchDataHSuccess, hand
   };
   
   return (
-    <div className="overflow-x-auto p-1 m-1 rounded-md " style={{ backgroundColor: 'rgb(212 212 212)' }} >
+    <div className="overflow-x-auto p-1 m-1 rounded-md " style={{ backgroundColor: '#e9e9e9a3'  }} >
        <div className="flex justify-center mt-4">
         <h3 className="text-2xl font-bold mb-2">Date</h3>
       </div>
@@ -72,6 +73,7 @@ const TableComponentAllHistorique = ({ data1,fetchHData, fetchDataHSuccess, hand
         </tbody>
       </table>
      
+      <TableContainerHistorique  />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import TableContainer from './containers/TableContainer';
 import LeftSidebar from './components/LeftSidebar';
 import Layout from './components/Layout';
 import RightSidebarAdmin from './components/RightSidebarAdmin';
+import { HREF_ADMIN_INVOICE, PAGE_ADMIN_ID } from './utils/content';
 
 const Admin = () => {
   const [cartItems, setCartItems] = useState([])
@@ -34,7 +35,7 @@ const Admin = () => {
     <Provider store={store}>
       <div> 
       <Layout>
-                <LeftSidebar menu={"/admin/invoices"} />
+                <LeftSidebar menu={HREF_ADMIN_INVOICE} />
                 <TableContainer addMultipleToCart={addMultipleToCart} setIdInvoice={setIdInvoice} />
                 <RightSidebarAdmin                   
                     cartItems = {cartItems}
@@ -53,7 +54,7 @@ const Admin = () => {
 };
 
 export default Admin;
-const container =  document.getElementById('admin') 
+const container =  document.getElementById(PAGE_ADMIN_ID) 
 
 const root = createRoot(container);  
 root.render(<Admin  />);

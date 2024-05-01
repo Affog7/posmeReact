@@ -9,9 +9,7 @@ const RegisterCustomerModal = ({ isOpen, onClose }) => {
   
     const handleRegister = (e) => {
       e.preventDefault();
-      // Handle registration logic here
       saveCustomer(email,tel,address,nom)
-      // Close the modal after registration
       onClose();
     };
   

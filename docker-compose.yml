@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+
+volumes:
+  mongodb_data:
+    driver: local

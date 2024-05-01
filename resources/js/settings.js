@@ -6,29 +6,29 @@ import { Provider } from 'react-redux';
 import store from './utils/store';
 import Layout from './components/Layout';
 import LeftSidebar from './components/LeftSidebar';
-import TableComponentHistorique from './components/TableComponentHistorique';
-import TableContainer from './containers/TableContainer';
-import TableContainerHistorique from './containers/TableContainerHistorique';
 import TableContainerAllHistorique from './containers/TableContainerAllHistorique';
 import ReportsContainer from './containers/ReportContainer';
+import { HREF_ADMIN_SETTING, PAGE_SETTING_ID } from './utils/content';
 
 const Setting = () => {
   return (
     <Provider store={store}>
       <div> 
         <Layout>
-            <LeftSidebar menu={"/settings"} />
-           <TableContainerHistorique /> 
+            <LeftSidebar menu={HREF_ADMIN_SETTING} />
            <TableContainerAllHistorique /> 
            <ReportsContainer /> 
+           
         </Layout>
-      </div>
+ 
+      </div>           
+
     </Provider>
   );
 };
 
 export default Setting;
-const container =  document.getElementById('settings') 
+const container =  document.getElementById(PAGE_SETTING_ID) 
 
 const root = createRoot(container); 
 root.render(<Setting  />);

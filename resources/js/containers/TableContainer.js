@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
  
 const mapDispatchToProps = (dispatch, props) => ({
-  fetchData: () => dispatch(fetchData()), // Appel fetchData en tant que fonction
+  fetchData: () => dispatch(fetchData()),  
   fetchDataSuccess: (data) => dispatch(fetchDataSuccess(data)),
   addMultipleToCart: props.addMultipleToCart ,
   setIdInvoice: props.setIdInvoice ,

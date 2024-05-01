@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
 import {dateFormat} from './utils/helper'
 
 import Layout from './components/Layout'
@@ -8,6 +7,7 @@ import ReceiptModal from './components/ReceiptModal'
 import RightSidebar from './components/RightSidebar'
 import CaisseMode from './pages/CaisseMode'
 import { createRoot } from 'react-dom/client'
+import { AUDIO_21, AUDIO_29, HREF_CAISSE, PAGE_CAISSE_ID, SHOP_POS_CODE } from './utils/content'
 
 const Caisse = () => {
     const [cartItems, setCartItems] = useState([])
@@ -30,11 +30,11 @@ const Caisse = () => {
     }
 
     const beep = () => {
-        playSound("sound/beep-29.mp3");
+        playSound(AUDIO_29);
     }
 
     const clearSound = () => {
-        playSound("sound/button-21.mp3");
+        playSound(AUDIO_21);
     }
 
     const getTotalPrice = () => {
@@ -60,7 +60,6 @@ const Caisse = () => {
                 )
             )
         }else{
-            console.log(product)
             setCartItems([...cartItems, {...product, qty: 1}])
         }
 
@@ -100,7 +99,7 @@ const Caisse = () => {
         const time = new Date();
         setShowReceiptModal(true)
         setReceipt({
-            receiptNo : `ACPOS-KS-${Math.round(time.getTime() / 1000)}`,
+            receiptNo : `${SHOP_POS_CODE}-${Math.round(time.getTime() / 1000)}`,
             receiptDate : dateFormat(time)
         })
     }
@@ -117,7 +116,7 @@ const Caisse = () => {
         <>
             <Layout>
 
-                <LeftSidebar menu={"/caisse"} />
+                <LeftSidebar menu={HREF_CAISSE} />
                 <CaisseMode addMultipleToCart={addMultipleToCart} />
                 <RightSidebar
                     clearCart = {clearCart}
@@ -151,7 +150,7 @@ const Caisse = () => {
     )
 }
  
-const container =  document.getElementById('caisse') 
+const container =  document.getElementById(PAGE_CAISSE_ID) 
 
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container);
 root.render(<Caisse  />);

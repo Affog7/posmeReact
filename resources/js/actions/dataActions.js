@@ -10,7 +10,7 @@ export const fetchData = () =>  {
         const response = await web('/invoices');
         const data = await response.data;
 
-        console.log(data)
+        //console.log(data)
         dispatch({ type: FETCH_DATA_SUCCESS, payload: data });
       } catch (error) {
         console.log(error)

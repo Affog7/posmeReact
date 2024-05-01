@@ -11,14 +11,11 @@ const TableComponent = ({ data, fetchData, fetchDataSuccess,addMultipleToCart,se
   }, [fetchDataSuccess]);
 
   const handleEdit = (id) => {
-    // Ajouter la logique d'édition ici
-    console.log(`Éditer l'élément avec l'ID ${id}`);
   };
 
   const handleDetails = (item) => {
     setIdInvoice(item.id)
     addMultipleToCart(item)
-    //console.log(`Supprimer l'élément avec l'ID ${id}`);
   };
   const filteredData = data.filter((item) =>
   item.receipt_number.toUpperCase().includes(filter.receiptNumber.toUpperCase()) &&
