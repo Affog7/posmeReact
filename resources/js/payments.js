@@ -52,6 +52,7 @@ const CheckoutForm = () => {
                 <input
                     type="text"
                     value={amount}
+                    className="form-control"
                     onChange={e => setAmount(e.target.value)}
                     required
                 />
