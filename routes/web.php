@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CaisseController;
 use App\Http\Controllers\HistoriqueController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ use App\Http\Controllers\HistoriqueController;
 |
 */
 Route::middleware(['auth'])->group(function () {
+
+    // paiement routes
+    Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
+
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('/invoice/store', [InvoiceController::class, 'store'])->name('invoice.store');
  
@@ -42,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get("/admin/settings", function(){
         return view("settings");
+    } );
+
+    Route::get("/admin/payment", function(){
+        return view("payments.index");
     } );
 
     Route::get("/admin/invoices", function(){

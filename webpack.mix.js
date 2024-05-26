@@ -24,6 +24,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/caisse.js', 'public/js')
     .js('resources/js/admin.js', 'public/js')
     .js('resources/js/settings.js', 'public/js')
+    .js('resources/js/payments.js', 'public/js')
     .react()
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss')

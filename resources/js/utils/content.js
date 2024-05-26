@@ -16,6 +16,7 @@ export const AUDIO_21 = "sound/button-21.mp3" ;
 
 // ID
 export const PAGE_SETTING_ID = "settings" ;
+export const PAGE_PAYMENT_ID = "payments" ;
 export const PAGE_CAISSE_ID = "caisse" ;
 export const PAGE_HOME_ID = "root" ;
 export const PAGE_ADMIN_ID = "admin" ;

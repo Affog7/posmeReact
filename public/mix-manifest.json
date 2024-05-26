@@ -4,5 +4,6 @@
     "/js/caisse.js": "/js/caisse.js",
     "/js/admin.js": "/js/admin.js",
     "/js/settings.js": "/js/settings.js",
+    "/js/payments.js": "/js/payments.js",
     "/css/app.css": "/css/app.css"
 }

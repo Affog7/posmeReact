@@ -38,7 +38,7 @@ const ReceiptModal = (props) => {
         })
         .then((response) => {
             setProcessing(false)
-           // console.log(response)
+        
             if(response.status === 200 && response.data.success === 1) {
                 const titleBefore = document.title
                 document.title = receipt.receiptNo

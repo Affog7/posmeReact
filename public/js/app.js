@@ -621,7 +621,6 @@ var ReceiptModal = function ReceiptModal(props) {
               products: cartItems
             }).then(function (response) {
               setProcessing(false);
-              // console.log(response)
               if (response.status === 200 && response.data.success === 1) {
                 var titleBefore = document.title;
                 document.title = receipt.receiptNo;
@@ -1629,6 +1628,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PAGE_ADMIN_ID: () => (/* binding */ PAGE_ADMIN_ID),
 /* harmony export */   PAGE_CAISSE_ID: () => (/* binding */ PAGE_CAISSE_ID),
 /* harmony export */   PAGE_HOME_ID: () => (/* binding */ PAGE_HOME_ID),
+/* harmony export */   PAGE_PAYMENT_ID: () => (/* binding */ PAGE_PAYMENT_ID),
 /* harmony export */   PAGE_SETTING_ID: () => (/* binding */ PAGE_SETTING_ID),
 /* harmony export */   SHOP_NAME: () => (/* binding */ SHOP_NAME),
 /* harmony export */   SHOP_POS: () => (/* binding */ SHOP_POS),
@@ -1652,6 +1652,7 @@ var AUDIO_21 = "sound/button-21.mp3";
 
 // ID
 var PAGE_SETTING_ID = "settings";
+var PAGE_PAYMENT_ID = "payments";
 var PAGE_CAISSE_ID = "caisse";
 var PAGE_HOME_ID = "root";
 var PAGE_ADMIN_ID = "admin";
