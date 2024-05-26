@@ -9,7 +9,7 @@ import web from './utils/web';
 
 const stripePromise = loadStripe('pk_test_51PKHq0Cmi4dDiaj2gYS0zzSa6vBlSg3uNAfbBfiTiDBHGTxhVuhrOQTFtfkwRfDO7XVqijMXcYoUzGoGKKuzYWcU00wMA4k9j3');
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ onPaymentSuccess }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [amount, setAmount] = useState('');
@@ -39,6 +39,7 @@ const CheckoutForm = () => {
         })
         .then(response => {
             console.log('Payment created successfully:', response.data);
+            onPaymentSuccess(); // Call the callback to hide the form
         })
         .catch(error => {
             console.error('There was an error creating the payment!', error);
@@ -46,7 +47,7 @@ const CheckoutForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="paiement">
             <div>
                 <label>Amount</label>
                 <input
@@ -65,14 +66,28 @@ const CheckoutForm = () => {
     );
 };
 
-const PaymentForm = () => (
-    <Elements stripe={stripePromise}>
-        <CheckoutForm />
-    </Elements>
-);
+const PaymentForm = () => {
+    const [showForm, setShowForm] = useState(false);
 
-export default PaymentForm; 
-const container =  document.getElementById(PAGE_PAYMENT_ID) 
+    const handlePaymentSuccess = () => {
+        setShowForm(false);
+    };
 
-const root = createRoot(container); 
-root.render(<PaymentForm  />);
+    return (
+        <div>
+            {showForm ? (
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm onPaymentSuccess={handlePaymentSuccess} />
+                </Elements>
+            ) : (
+                <button onClick={() => setShowForm(true)}>Payer</button>
+            )}
+        </div>
+    );
+};
+
+export default PaymentForm;
+
+const container = document.getElementById(PAGE_PAYMENT_ID);
+const root = createRoot(container);
+root.render(<PaymentForm />);

@@ -43894,7 +43894,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__.loadStripe)('pk_test_51PKHq0Cmi4dDiaj2gYS0zzSa6vBlSg3uNAfbBfiTiDBHGTxhVuhrOQTFtfkwRfDO7XVqijMXcYoUzGoGKKuzYWcU00wMA4k9j3');
-var CheckoutForm = function CheckoutForm() {
+var CheckoutForm = function CheckoutForm(_ref) {
+  var onPaymentSuccess = _ref.onPaymentSuccess;
   var stripe = (0,_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.useStripe)();
   var elements = (0,_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.useElements)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
@@ -43902,7 +43903,7 @@ var CheckoutForm = function CheckoutForm() {
     amount = _useState2[0],
     setAmount = _useState2[1];
   var handleSubmit = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
       var card, _yield$stripe$createP, error, paymentMethod;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
@@ -43936,6 +43937,7 @@ var CheckoutForm = function CheckoutForm() {
               payment_method: paymentMethod.id
             }).then(function (response) {
               console.log('Payment created successfully:', response.data);
+              onPaymentSuccess(); // Call the callback to hide the form
             })["catch"](function (error) {
               console.error('There was an error creating the payment!', error);
             });
@@ -43946,17 +43948,19 @@ var CheckoutForm = function CheckoutForm() {
       }, _callee);
     }));
     return function handleSubmit(_x) {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
     onSubmit: handleSubmit,
+    className: "paiement",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
         children: "Amount"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
         type: "text",
         value: amount,
+        className: "form-control",
         onChange: function onChange(e) {
           return setAmount(e.target.value);
         },
@@ -43972,9 +43976,25 @@ var CheckoutForm = function CheckoutForm() {
   });
 };
 var PaymentForm = function PaymentForm() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.Elements, {
-    stripe: stripePromise,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(CheckoutForm, {})
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    showForm = _useState4[0],
+    setShowForm = _useState4[1];
+  var handlePaymentSuccess = function handlePaymentSuccess() {
+    setShowForm(false);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    children: showForm ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.Elements, {
+      stripe: stripePromise,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(CheckoutForm, {
+        onPaymentSuccess: handlePaymentSuccess
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+      onClick: function onClick() {
+        return setShowForm(true);
+      },
+      children: "Payer"
+    })
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PaymentForm);
