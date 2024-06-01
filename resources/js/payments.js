@@ -6,6 +6,8 @@ import { createRoot } from 'react-dom/client';
 import store from './utils/store';
 import { PAGE_PAYMENT_ID } from './utils/content';
 import web from './utils/web';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDollar } from '@fortawesome/free-solid-svg-icons';
 
 const stripePromise = loadStripe('pk_test_51PKHq0Cmi4dDiaj2gYS0zzSa6vBlSg3uNAfbBfiTiDBHGTxhVuhrOQTFtfkwRfDO7XVqijMXcYoUzGoGKKuzYWcU00wMA4k9j3');
 
@@ -13,7 +15,7 @@ const CheckoutForm = ({ onPaymentSuccess }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [amount, setAmount] = useState('');
-
+ 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -29,7 +31,7 @@ const CheckoutForm = ({ onPaymentSuccess }) => {
         });
 
         if (error) {
-            console.error('Payment method creation error:', error);
+            console.log('Payment method creation error:', error);
             return;
         }
 
@@ -62,14 +64,16 @@ const CheckoutForm = ({ onPaymentSuccess }) => {
                 <CardElement />
             </div>
             <button type="submit" disabled={!stripe}>Submit</button>
+     
         </form>
     );
 };
 
-const PaymentForm = () => {
+const PaymentForm = ({setStatusPaid}) => {
     const [showForm, setShowForm] = useState(false);
 
     const handlePaymentSuccess = () => {
+        setStatusPaid("Payment réussi avec succès")
         setShowForm(false);
     };
 
@@ -80,7 +84,9 @@ const PaymentForm = () => {
                     <CheckoutForm onPaymentSuccess={handlePaymentSuccess} />
                 </Elements>
             ) : (
-                <button onClick={() => setShowForm(true)}>Payer</button>
+                <button onClick={() => setShowForm(true)} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-150 ease-in-out">
+                    Payer  <FontAwesomeIcon icon={faDollar} /> 
+                </button>
             )}
         </div>
     );
@@ -88,6 +94,6 @@ const PaymentForm = () => {
 
 export default PaymentForm;
 
-const container = document.getElementById(PAGE_PAYMENT_ID);
-const root = createRoot(container);
-root.render(<PaymentForm />);
+//const container = document.getElementById(PAGE_PAYMENT_ID);
+//const root = createRoot(container);
+//root.render(<PaymentForm />);

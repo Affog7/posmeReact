@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import web from '../utils/web'
 import RegisterCustomerModal from '../containers/registerCustomerContainer';
+import { useSaveCustomer } from '../actions/dataActions';
 
 const LiveSearchComponent = ({onUpdateSelectedItem,client}) => {
-  const [searchTerm, setSearchTerm] = useState(client);
+  const { data, error, loading, saveCustomer } = useSaveCustomer();
+
+  const [searchTerm, setSearchTerm] = useState(client); 
 
   const [results, setResults] = useState([]);
- 
+   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleSelect = (selectedValue,id) => {
     setSearchTerm(selectedValue); 
     onUpdateSelectedItem(id);
@@ -31,16 +34,25 @@ const LiveSearchComponent = ({onUpdateSelectedItem,client}) => {
     fetchData();
   }, [searchTerm]);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    if (data) {
+      handleSelect(data.name, data.id);
+    }
+  }, [data, handleSelect]);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const handleGenerateClient = () => {
+    saveCustomer(null,null,null, "cl_".concat(Math.floor(Date.now() / 1000)) )
   };
 
   return (
     <div className="max-w-md mx-auto p-4">
 
       <div className=" flex justify-center">
+      <button className="bg-cyan-500  max-w-md  text-white  w-1/3 " onClick={handleGenerateClient} >Généré</button>
         <input
           type="text"
           placeholder="Rechercher client..."
@@ -50,7 +62,7 @@ const LiveSearchComponent = ({onUpdateSelectedItem,client}) => {
           className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
         />
         <button className="bg-cyan-500  max-w-md  text-white  w-1/3 " onClick={toggleModal} >Nouveau</button>
-        <RegisterCustomerModal isOpen={isModalOpen} onClose={toggleModal} />
+        <RegisterCustomerModal isOpen={isModalOpen} onClose={toggleModal} handleSelect={handleSelect} />
       </div>
 
       <ul className="mt-2 ">

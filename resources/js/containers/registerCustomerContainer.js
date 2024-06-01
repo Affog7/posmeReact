@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { saveCustomer } from '../actions/dataActions';
+import React, { useEffect, useState } from 'react';
+import { useSaveCustomer } from '../actions/dataActions';
 
-const RegisterCustomerModal = ({ isOpen, onClose }) => {
+const RegisterCustomerModal = ({ isOpen, onClose, handleSelect }) => {
+  const { data, error, loading, saveCustomer } = useSaveCustomer();
+
     const [email, setEmail] = useState('');
     const [nom, setNom] = useState('');
     const [tel, setTel] = useState('');
@@ -10,9 +12,16 @@ const RegisterCustomerModal = ({ isOpen, onClose }) => {
     const handleRegister = (e) => {
       e.preventDefault();
       saveCustomer(email,tel,address,nom)
-      onClose();
+        
+        onClose();
     };
   
+    useEffect(() => {
+      if (data) {
+        handleSelect(data.name, data.id);
+      }
+    }, [data, handleSelect]);
+
     return (
       <>
         {isOpen &&
@@ -31,11 +40,10 @@ const RegisterCustomerModal = ({ isOpen, onClose }) => {
                       id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      required
                     />
                   </div>
                   <div className="p-2">
-                    <label htmlFor="name">Nom:</label>
+                    <label htmlFor="name">Nom *:</label>
                     <input
                       type="text" 
                       className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
@@ -53,7 +61,6 @@ const RegisterCustomerModal = ({ isOpen, onClose }) => {
                       id="tel"
                       value={tel}
                       onChange={(e) => setTel(e.target.value)}
-                      required
                     />
                   </div>
                   <div className="p-2">
@@ -64,7 +71,6 @@ const RegisterCustomerModal = ({ isOpen, onClose }) => {
                       id="address"
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      required
                     />
                   </div>
                   

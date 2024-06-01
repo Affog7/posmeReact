@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import web from '../utils/web'
 export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS"
 export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE"
@@ -18,25 +19,42 @@ export const fetchData = () =>  {
       }
     };
   };
- 
-  export const  saveCustomer = (email,tel,address,nom) => {
+
+export const useSaveCustomer = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const saveCustomer = (email, tel, address, nom) => {
+    setLoading(true);
+    try {
       web.post('saveCustomer', {
-          email: email,
-          tel: tel,
-          address: address,
-          name: nom
-      }).then((response) => {
-          if(response.status === 204) {
-              window.location.reload()
-          }
-      }).catch((error) => { 
-          if(error.response.status === 422) {
-              alert('Please check your input')
-          }else{
-              alert('Erreur inconnue Contactez Augustin')
-          }
-      })
-  }
+        email: email,
+        tel: tel,
+        address: address,
+        name: nom
+    }).then((response) => {
+      if (response.status === 204) {
+        window.location.reload();
+      } else if (response.status === 200) {
+        setData(response.data);
+      }
+    }) 
+    } catch (error) {
+      if (error.response.status === 422) {
+        alert('Please check your input');
+      } else {
+        alert('Erreur inconnue Contactez Augustin');
+      }
+
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { data, error, loading, saveCustomer };
+};
 
   export const fetchDataSuccess = (data) => ({
     type: FETCH_DATA_SUCCESS,

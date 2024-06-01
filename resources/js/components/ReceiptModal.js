@@ -3,12 +3,13 @@ import { priceFormat } from '../utils/helper';
 import web from '../utils/web'
 import LiveSearchComponent from './SearchLive'
 import RegisterCustomerModal from '../containers/registerCustomerContainer';
+import PaymentForm from '../payments';
 const ReceiptModal = (props) => {
     const {showReceiptModal, setShowReceiptModal, receipt, cartItems, getTotalPrice, cash, clt, is_caisse,change, idInvoice, clearAll} = props;
     const [processing, setProcessing] = useState(false)
      const [client_id, setClientId] = useState(clt.id)
     let [is_paid, setIs_paid] = useState(true)
- 
+    const [statusPaid, setStatusPaid] = useState("");
     // pour mettre à jour
     const handleDataUpdate  = (value) => {
         setClientId(value);
@@ -131,9 +132,11 @@ const ReceiptModal = (props) => {
                           <LiveSearchComponent onUpdateSelectedItem={handleDataUpdate} client={clt.client} />
                         
                         <div className="p-4 w-full">
-                            <button disabled={processing} onClick={() => printAndProceed()} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
+                        <PaymentForm setStatusPaid = {setStatusPaid}  />
+      {statusPaid}
+                            {/* <button disabled={processing} onClick={() => printAndProceed()} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'VALIDER'}
-                            </button>
+                            </button> */}
                             <button disabled={processing || is_caisse}  onClick={() => !is_caisse ? printAndCaisse() : {}} className="bg-yellow-700 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'CAISSE'}
                             </button>
