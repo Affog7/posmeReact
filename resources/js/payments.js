@@ -6,14 +6,16 @@ import { createRoot } from 'react-dom/client';
 import store from './utils/store';
 import { PAGE_PAYMENT_ID } from './utils/content';
 import web from './utils/web';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDollar } from '@fortawesome/free-solid-svg-icons';
 
 const stripePromise = loadStripe('pk_test_51PKHq0Cmi4dDiaj2gYS0zzSa6vBlSg3uNAfbBfiTiDBHGTxhVuhrOQTFtfkwRfDO7XVqijMXcYoUzGoGKKuzYWcU00wMA4k9j3');
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ onPaymentSuccess }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [amount, setAmount] = useState('');
-
+ 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -29,7 +31,7 @@ const CheckoutForm = () => {
         });
 
         if (error) {
-            console.error('Payment method creation error:', error);
+            console.log('Payment method creation error:', error);
             return;
         }
 
@@ -39,6 +41,7 @@ const CheckoutForm = () => {
         })
         .then(response => {
             console.log('Payment created successfully:', response.data);
+            onPaymentSuccess(); // Call the callback to hide the form
         })
         .catch(error => {
             console.error('There was an error creating the payment!', error);
@@ -46,12 +49,13 @@ const CheckoutForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="paiement">
             <div>
                 <label>Amount</label>
                 <input
                     type="text"
                     value={amount}
+                    className="form-control"
                     onChange={e => setAmount(e.target.value)}
                     required
                 />
@@ -60,18 +64,36 @@ const CheckoutForm = () => {
                 <CardElement />
             </div>
             <button type="submit" disabled={!stripe}>Submit</button>
+     
         </form>
     );
 };
 
-const PaymentForm = () => (
-    <Elements stripe={stripePromise}>
-        <CheckoutForm />
-    </Elements>
-);
+const PaymentForm = ({setStatusPaid}) => {
+    const [showForm, setShowForm] = useState(false);
 
-export default PaymentForm; 
-const container =  document.getElementById(PAGE_PAYMENT_ID) 
+    const handlePaymentSuccess = () => {
+        setStatusPaid("Payment réussi avec succès")
+        setShowForm(false);
+    };
 
-const root = createRoot(container); 
-root.render(<PaymentForm  />);
+    return (
+        <div>
+            {showForm ? (
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm onPaymentSuccess={handlePaymentSuccess} />
+                </Elements>
+            ) : (
+                <button onClick={() => setShowForm(true)} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-150 ease-in-out">
+                    Payer  <FontAwesomeIcon icon={faDollar} /> 
+                </button>
+            )}
+        </div>
+    );
+};
+
+export default PaymentForm;
+
+//const container = document.getElementById(PAGE_PAYMENT_ID);
+//const root = createRoot(container);
+//root.render(<PaymentForm />);

@@ -67,7 +67,7 @@ const TableComponent = ({ data, fetchData, fetchDataSuccess,addMultipleToCart,se
         </thead>
         <tbody>
           {filteredData.map((item) => (
-            <tr key={item.id} className="hover:bg-gray-50 transition-all">
+            <tr key={item.id} className={`hover:bg-gray-50 transition-all ${item.is_paid ? "" : "bg-red-200"} `}>
               <td className="py-3 px-4 border-b text-center">{item.client}</td>
               <td className="py-3 px-4 border-b text-center">{item.created_invoice}</td>
               <td className="py-3 px-4 border-b text-center">{item.receipt_number}</td>

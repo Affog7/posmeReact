@@ -31193,18 +31193,7 @@ table td {
   align-items: center;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-form {
+.paiement {
   width: 30vw;
   min-width: 500px;
   align-self: center;
@@ -31228,7 +31217,7 @@ form {
 
 /* Buttons and links */
 
-button {
+.paiement button {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -31244,11 +31233,11 @@ button {
   width: 100%;
 }
 
-button:hover {
+.paiement button:hover {
   filter: contrast(115%);
 }
 
-button:disabled {
+.paiement button:disabled {
   opacity: 0.5;
   cursor: default;
 }
@@ -31312,7 +31301,7 @@ button:disabled {
 }
 
 @media only screen and (max-width: 600px) {
-  form {
+  .paiement {
     width: 80vw;
     min-width: initial;
   }

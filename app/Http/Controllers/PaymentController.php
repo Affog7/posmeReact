@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Stripe\Stripe;
-use Stripe\Charge;
+use Stripe\PaymentIntent;
+use App\Models\Payment;
 
 class PaymentController extends Controller
 {
@@ -19,21 +20,22 @@ class PaymentController extends Controller
 
         
         try {
-            $charge = Charge::create([
+            $paymentIntent = PaymentIntent::create([
                 'amount' => $request->amount * 100, // Amount in cents
                 'currency' => 'usd',
-                'source' => $request->payment_method,
-                'description' => 'Payment description',
+                'payment_method_types' => ['card'],
             ]);
 
+            
             $payment = new Payment();
             $payment->user_id = auth()->id();
             $payment->amount = $request->amount;
             $payment->status = 'completed';
+            $payment->ref_payment = $paymentIntent->client_secret;
             $payment->payment_method = 'stripe';
             $payment->save();
 
-            return response()->json(['success' => 1, 'message' => 'Payment succeed']);
+            return response()->json(['success' => 1, 'message' => 'Payment succeed','clientSecret' => $paymentIntent->client_secret]);
 
         } catch (\Exception $e) {
             return response()->json(['error' => 'Payment failed: ' . $e->getMessage()], 500);
