@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import PaymentForm from '../payments';
  
 const ReportComponentDisplay = ({ data }) => {
-  const [statusPaid, setStatusPaid] = useState("");
+  // const [statusPaid, setStatusPaid] = useState("");
 
   // Filtrer les détails en fonction de l'action (insert ou update)
   const insertDetails = data?.details?.filter(detail => detail.action === 'insert');
@@ -103,8 +103,8 @@ const ReportComponentDisplay = ({ data }) => {
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-150 ease-in-out">
         Imprimer  <FontAwesomeIcon icon={faFilePdf} />
       </button>
-      <PaymentForm setStatusPaid = {setStatusPaid}  />
-      {statusPaid}
+      {/* <PaymentForm setStatusPaid = {setStatusPaid}  /> */}
+      {/* {statusPaid} */}
       </div>
     </div>
   );

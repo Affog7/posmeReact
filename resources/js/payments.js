@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import axios from 'axios';
-import { createRoot } from 'react-dom/client';
-import store from './utils/store';
-import { PAGE_PAYMENT_ID } from './utils/content';
 import web from './utils/web';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollar } from '@fortawesome/free-solid-svg-icons';
+import { DEVISE } from './utils/content';
 
 const stripePromise = loadStripe('pk_test_51PKHq0Cmi4dDiaj2gYS0zzSa6vBlSg3uNAfbBfiTiDBHGTxhVuhrOQTFtfkwRfDO7XVqijMXcYoUzGoGKKuzYWcU00wMA4k9j3');
 
-const CheckoutForm = ({ onPaymentSuccess }) => {
+const CheckoutForm = ({ onPaymentSuccess, amount }) => {
     const stripe = useStripe();
     const elements = useElements();
-    const [amount, setAmount] = useState('');
+    const [proc, setProc] = useState(false);
  
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        setProc(true)
         if (!stripe || !elements) {
             return;
         }
@@ -41,7 +38,8 @@ const CheckoutForm = ({ onPaymentSuccess }) => {
         })
         .then(response => {
             console.log('Payment created successfully:', response.data);
-            onPaymentSuccess(); // Call the callback to hide the form
+            onPaymentSuccess(); 
+            setProc(false)
         })
         .catch(error => {
             console.error('There was an error creating the payment!', error);
@@ -50,43 +48,51 @@ const CheckoutForm = ({ onPaymentSuccess }) => {
 
     return (
         <form onSubmit={handleSubmit} className="paiement">
-            <div>
-                <label>Amount</label>
+            <div className="text-left m-1">
+                <label>Amount : </label>
                 <input
                     type="text"
-                    value={amount}
-                    className="form-control"
-                    onChange={e => setAmount(e.target.value)}
-                    required
+                    value={`${DEVISE} ${amount}`}
+                    className="form-control" placeholder={amount}
+                    disabled
                 />
             </div>
-            <div>
-                <CardElement />
+            <div className="p-3">
+                <CardElement  />
             </div>
-            <button type="submit" disabled={!stripe}>Submit</button>
+            <button  type="submit" disabled={!stripe} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
+            { proc ? 'Processing..' : 'VALIDER'}
+            </button> 
      
         </form>
     );
 };
 
-const PaymentForm = ({setStatusPaid}) => {
+const PaymentForm = ({setStatusPaid, onPrintAndProceed, mustPay}) => {
     const [showForm, setShowForm] = useState(false);
 
     const handlePaymentSuccess = () => {
         setStatusPaid("Payment réussi avec succès")
         setShowForm(false);
+        onPrintAndProceed();
     };
 
     return (
         <div>
             {showForm ? (
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm onPaymentSuccess={handlePaymentSuccess} />
+                    <CheckoutForm onPaymentSuccess={handlePaymentSuccess} amount = {mustPay} />
                 </Elements>
             ) : (
-                <button onClick={() => setShowForm(true)} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md hover:shadow-lg transition duration-150 ease-in-out">
-                    Payer  <FontAwesomeIcon icon={faDollar} /> 
-                </button>
+                <div className="flex">
+                     <button onClick={() => setShowForm(true)} class="bg-cyan-500 hover:bg-cyan-400 m-2 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
+                        Payer ({DEVISE})
+                    </button>
+
+                    <button onClick={() => onPrintAndProceed()} class="bg-gray-400 hover:bg-blue-400 m-2 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
+                        Payer cash
+                    </button>
+                </div>
             )}
         </div>
     );
