@@ -5,6 +5,7 @@
 ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/facturer.png)
 ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/admin1.png)
 ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/client.png)
+![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/stripe.png)
 ![posmeReact](https://github.com/Affog7/posmeReact/blob/master/public/img/paramettre.png)
 ## About POSME
 
