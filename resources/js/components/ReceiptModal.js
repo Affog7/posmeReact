@@ -131,12 +131,14 @@ const ReceiptModal = (props) => {
                          
                           <LiveSearchComponent onUpdateSelectedItem={handleDataUpdate} client={clt.client} />
                         
-                        <div className="p-4 w-full">
-                        <PaymentForm setStatusPaid = {setStatusPaid}  />
-      {statusPaid}
+                        <div className="p-4 w-full text-center">
+
+                        <PaymentForm setStatusPaid = {setStatusPaid}  onPrintAndProceed ={printAndProceed} mustPay ={getTotalPrice()} />
+                            {statusPaid}
                             {/* <button disabled={processing} onClick={() => printAndProceed()} className="bg-cyan-500 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'VALIDER'}
                             </button> */}
+                            <hr/>
                             <button disabled={processing || is_caisse}  onClick={() => !is_caisse ? printAndCaisse() : {}} className="bg-yellow-700 hover:bg-cyan-400 text-white text-lg px-4 py-3 rounded-2xl w-1/2 focus:outline-none">
                                 { processing ? 'Processing..' : 'CAISSE'}
                             </button>
