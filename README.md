@@ -49,3 +49,6 @@ Sample food photos in this application are downloaded from freepik.com accounts 
 * [Racool_studio](https://www.freepik.com/Racool_studio)
 * [8photo](https://www.freepik.com/8photo)
 
+## Author : 
+
+* <a >Augustin AFFOGNON</a>
