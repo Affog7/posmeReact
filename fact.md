@@ -16,8 +16,8 @@ Email:augustinaffognon2000@gmail.com
 
 ---
 
-**Numéro de facture :** 2024-001  
-**Date de facture :** 05 Septembre 2024  
+**Numéro de facture :** 2024-002  
+**Date de facture :** 17 Septembre 2024  
 **Échéance :** __ Septembre 2024  
 
 ---
@@ -26,11 +26,15 @@ Email:augustinaffognon2000@gmail.com
 
 | Description                          | Quantité | Prix Unitaire | Total  |
 |--------------------------------------|----------|---------------|--------|
-| Mise en place d'un Figma              | 1        | 280€          | 280€   |
+| Mise en place plugin wordpress       | 1        | 1000€         | 1000€  |
 
 ---
 
-**Montant total à payer :** 280€  
+**Montant total à payer :** 1000€  
+
+**Conditions de paiement** :
+* Acompte de 50 % à la validation du devis : 500,00 € TTC <br>
+* Solde de 50 % à la livraison du projet : 500,00 € TTC
 
 ---
 
