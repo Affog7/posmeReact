@@ -1,4 +1,8 @@
- <a href="https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC"> Pay me Cofee</a> <button> </button>
+[![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC)
+## Supportez le projet
+Si vous aimez ce projet, pensez à faire un don pour soutenir son développement!
+
+[![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC)
 
 <!-- ![posmeReact](https://user-images.githubusercontent.com/68384962/115121239-bb106480-9fdb-11eb-9076-731d4181988b.png)
  -->
@@ -54,3 +58,5 @@ Sample food photos in this application are downloaded from freepik.com accounts 
 ## Author : 
 
 * <a >Augustin AFFOGNON</a>
+
+[![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC)
