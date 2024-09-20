@@ -1,6 +1,10 @@
-[![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC)
+[![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC) [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC)
 ## Supportez le projet
-Si vous aimez ce projet, pensez à faire un don pour soutenir son développement!
+Si vous aimez ce projet, pensez à faire un don pour soutenir son développement! 
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-donate-yellow.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC)
 
 [![Faire un don via PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/ncp/payment/CEJLEXK9MFWGC)
 
