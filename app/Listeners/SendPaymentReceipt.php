@@ -35,8 +35,8 @@ class SendPaymentReceipt
             'body' => 'Thank you for your payment of $' . $event->payment->amount . '.'
         ];
 
-        Log::info($event->payment);
+       // Log::info($event->payment->user);
         // Envoyer l'email
-        Mail::to($event->payment->user->email)->send(new ClientMail($details));
+       // Mail::to($event->payment->user->email)->send(new ClientMail($details));
     }
 }

@@ -2378,6 +2378,8 @@ var ReceiptModal = function ReceiptModal(props) {
       return _ref.apply(this, arguments);
     };
   }();
+
+  // payer et imprimer cash
   var printAndProceed = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
