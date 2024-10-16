@@ -23,7 +23,8 @@ Email : augustinaffognon2000@gmail.com
 ---
 
 ## Description des services
-
+* Dev 1
+  
 | Description                           | Coût | Durée | 
 |---------------------------------------|----------|---------------| 
 | 2.1 Terminer les fonctionnalités Poste Home| 800        | 6 jours         |  
@@ -32,7 +33,9 @@ Email : augustinaffognon2000@gmail.com
 | 2.4 Events                                  | 700        | 3 jours         | 
 | 2.5 Paiement et options Premium           | 800        | 4.5 jours         |  
 ---
-| Tâche                                             | Coût | Durée    |
+* Dev 2
+  
+| Description                                             | Coût | Durée    |
 |---------------------------------------------------|------|----------|
 | 3.1 CREATION DE COMPTE                            | 300  | 1,5 jours |
 | 3.3 SECTIONS HOMES + SUPPLY                       | 300  | 1,5 jours |
