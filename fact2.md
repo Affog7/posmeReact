@@ -23,8 +23,7 @@ Email : augustinaffognon2000@gmail.com
 ---
 
 ## Description des services
-* Dev 1
-  
+   
 | Description                           | Coût | Durée | 
 |---------------------------------------|----------|---------------| 
 | 1.1 Terminer les fonctionnalités Poste Home| 800        | 6 jours         |  
