@@ -22,6 +22,7 @@ const ReceiptModal = (props) => {
         printAndProceed();
     }
 
+    // payer et imprimer cash
     const printAndProceed = async () => {
         setProcessing(true)
         setIs_paid(true)

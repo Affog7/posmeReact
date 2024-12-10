@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use App\Models\Payment;
+use App\Events\PaymentCreated;
 
 class PaymentController extends Controller
 {
@@ -34,6 +35,9 @@ class PaymentController extends Controller
             $payment->ref_payment = $paymentIntent->client_secret;
             $payment->payment_method = 'stripe';
             $payment->save();
+
+             // Déclencher l'événement
+             event(new PaymentCreated($payment));
 
             return response()->json(['success' => 1, 'message' => 'Payment succeed','clientSecret' => $paymentIntent->client_secret]);
 

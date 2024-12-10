@@ -8,6 +8,7 @@ import ReceiptModal from './components/ReceiptModal'
 import RightSidebar from './components/RightSidebar'
 import ProductMode from './pages/ProductMode'
 import { AUDIO_21, AUDIO_29, HREF_HOME, PAGE_HOME_ID, SHOP_POS_CODE } from './utils/content'
+import Popup from './client/Popup'
 
 const App = () => {
     const [cartItems, setCartItems] = useState([])
@@ -105,8 +106,10 @@ const App = () => {
 
     return (
         <>
+        <Popup />
             <Layout>
-                <LeftSidebar menu={HREF_HOME} />
+
+                <LeftSidebar ClassName="" menu={HREF_HOME} />
                 <ProductMode addToCart={addToCart} />
                 <RightSidebar
                     clearCart={clearCart}

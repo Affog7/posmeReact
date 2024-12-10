@@ -47,6 +47,12 @@ const ProductMode = (props) => {
                         </svg>
                     </div>
                     <input onChange={(e) => setSearch(e.target.value)} type="text" className="bg-white rounded-3xl shadow text-lg full w-full h-16 py-4 pl-16 transition-shadow focus:shadow-2xl focus:outline-none" placeholder="Rechercher un produit ..." />
+                    <div className="absolute right-5 top-3 px-2 py-2 rounded-full bg-cyan-500 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                    </div>
+
                     </div>
                     <div className="h-full overflow-hidden mt-4">
                     <div className="h-full overflow-y-auto px-2">

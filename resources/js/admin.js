@@ -33,7 +33,7 @@ const Admin = () => {
 
   return (
     <Provider store={store}>
-      <div> 
+      <> 
       <Layout>
                 <LeftSidebar menu={HREF_ADMIN_INVOICE} />
                 <TableContainer addMultipleToCart={addMultipleToCart} setIdInvoice={setIdInvoice} />
@@ -48,7 +48,7 @@ const Admin = () => {
                 
       </Layout>
         
-      </div>
+      </>
     </Provider>
   );
 };
