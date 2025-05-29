@@ -23,7 +23,6 @@ Email : augustinaffognon2000@gmail.com
 ---
 
 ## Description des services
-* Dev 1
   
 | Description                                                   | Coût            | Durée         | 
 |---------------------------------------------------------------|-----------------|---------------| 
