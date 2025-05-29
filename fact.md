@@ -17,7 +17,7 @@ Email : augustinaffognon2000@gmail.com
 ---
 
 **Numéro de facture :** 2025-001  
-**Date de facture :** 29 Mai 2025 
+**Date de facture :** 29 Mai 2025 <br>
 **Échéance :** __ /__ 2025  
 
 ---
